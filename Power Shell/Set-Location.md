@@ -2,7 +2,11 @@
 
 ## 目次 ##
 
-* [Power Shell に投入した PS1 ファイル自身の path を取得する](#power-shell-に投入した-ps1-ファイル自身の-path-を取得する)
+* [使用方法](#使用方法)
+  * [Power Shell に投入した PS1 ファイル自身の path を取得する](#power-shell-に投入した-ps1-ファイル自身の-path-を取得する)
+* [参考文献](#参考文献)
+
+## 使用方法 ##
 
 ### Power Shell に投入した PS1 ファイル自身の path を取得する ###
 
