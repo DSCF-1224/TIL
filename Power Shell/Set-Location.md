@@ -21,6 +21,12 @@ $path_fldr_ThisPs1File = Split-Path -Parent $path_file_ThisPs1File
 # STEP.03
 # 取得したパスを用いて current ディレクトリを指定する
 Set-Location $path_fldr_ThisPs1File
+
+# 上述の STEP.01 と 02 は次行のように結合することができる
+$path_fldr_ThisPs1File = Split-Path -Parent $MyInvocation.MyCommand.Path
+
+# しかし， STEP.01 から 03 までを次行のように直結することはできない
+Set-Location Split-Path -Parent $MyInvocation.MyCommand.Path
 ```
 
 ## 参考文献 ##
@@ -31,3 +37,6 @@ Set-Location $path_fldr_ThisPs1File
     * [Split-Path](https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.management/split-path?view=powershell-6)
 * [GitHub/linguist](https://github.com/github/linguist)
   * [lib/linguist/languages.yml](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
+* Qiita
+  * [コマンドプロンプト/PowerShell でスクリプト自身のパスを扱う](https://qiita.com/heignamerican/items/a81a1f4de3e34b28d836)
+  * [[Powershell]スクリプトの自パスを取得する(Batの%~dp0)](https://qiita.com/wasureru/items/b9bc4a867c1fa38414f2)
