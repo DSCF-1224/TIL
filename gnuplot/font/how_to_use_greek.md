@@ -8,8 +8,8 @@
   * [大文字](#大文字)
 * [使用方法](#使用方法)
 * [ターミナルと対応フォント](#ターミナルと対応フォント)
-  * [Version 5.0 patchlevel 6 last modified 2017-03-18](#version-5.0-patchlevel-6-last-modified-2017-03-18)
-  * [Version 5.2 patchlevel 6 last modified 2019-01-01](#version-5.2-patchlevel-6-last-modified-2019-01-01)
+  * [Version 5.0 patchlevel 6 last modified 2017-03-18](#version-50-patchlevel-6-last-modified-2017-03-18)
+  * [Version 5.2 patchlevel 6 last modified 2019-01-01](#version-52-patchlevel-6-last-modified-2019-01-01)
 * [参考文献](#参考文献)
 
 ## バージョン情報 ##
@@ -35,8 +35,9 @@
 |&#x2014;|未検証|
 
 ### 小文字 ###
+
 |ギリシャ文字|8進数表記|Unicode|Name|
-|:-:|:-:|:-:|:-|:-:|
+|:-:|:-:|:-:|:-|
 |&#x03B1;|`\316\261`|`\\\\U+03B1`|GREEK SMALL LETTER ALPHA|
 |&#x03B2;|`\316\262`|`\\\\U+03B2`|GREEK SMALL LETTER BETA|
 |&#x03B3;|`\316\263`|`\\\\U+03B3`|GREEK SMALL LETTER GAMMA|
