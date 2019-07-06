@@ -7,14 +7,14 @@
     * [curry](#Prelude.curry)
     * [fst](#Prelude.fst)
     * [snd](#Prelude.snd)
-* [Indexing ByteStrings](#Indexing-ByteStrings)
-  * [index](#Data.ByteString.Char8.index)
+  * [Miscellaneous functions](#Miscellaneous-functions)
+    * [flip](#Prelude.flip)
 
 ## functions ##
 
 ### Basic data types ###
 
-#### [Prelude.fst](http://hackage.haskell.org/package/base-4.12.0.0/docs/Prelude.html#g:3) ####
+#### Prelude.fst ####
 
 ##### Prelude.fst` のコード サンプル #####
 
@@ -50,7 +50,7 @@ main = do
     * [curry](#Prelude.curry)
     * [snd](#Prelude.snd)
 
-#### [Prelude.snd](http://hackage.haskell.org/package/base-4.12.0.0/docs/Prelude.html#g:3) ####
+#### Prelude.snd ####
 
 ##### `Prelude.snd` のコード サンプル #####
 
@@ -86,7 +86,7 @@ main = do
     * [curry](#Prelude.curry)
     * [fst](#Prelude.fst)
 
-#### [Prelude.curry](http://hackage.haskell.org/package/base-4.12.0.0/docs/Prelude.html#g:3) ####
+#### Prelude.curry ####
 
 ~~~Haskell
 Prelude.curry :: ((a, b) -> c) -> a -> b -> c
@@ -125,5 +125,51 @@ main = do
   * [Basic data types](#Basic-data-types)
     * [fst](#Prelude.fst)
     * [snd](#Prelude.snd)
+
+### Miscellaneous functions ###
+
+#### Prelude.flip ####
+
+~~~Haskell
+Prelude.flip :: (a -> b -> c) -> b -> a -> c
+~~~
+
+##### Prelude.flip` のコード サンプル #####
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        -- STEP.01
+        -- output the return value of `Prelude.flip` and `(+)`
+        Prelude.print $ Prelude.flip (+) (0.0 :: Double) (1.0 :: Double) -- returns : 1.0
+        Prelude.print $ Prelude.flip (+) (1.0 :: Double) (0.0 :: Double) -- returns : 1.0
+
+        -- STEP.02
+        -- output the return value of `Prelude.flip` and `(-)`
+        Prelude.print $ Prelude.flip (-) (0.0 :: Double) (1.0 :: Double) -- returns :  1.0
+        Prelude.print $ Prelude.flip (-) (1.0 :: Double) (0.0 :: Double) -- returns : -1.0
+
+        -- STEP.03
+        -- output the return value of `Prelude.flip` and `(*)`
+        Prelude.print $ Prelude.flip (*) (1.0 :: Double) (2.0 :: Double) -- returns : 2.0
+        Prelude.print $ Prelude.flip (*) (2.0 :: Double) (1.0 :: Double) -- returns : 2.0
+
+        -- STEP.04
+        -- output the return value of `Prelude.flip` and `(/)`
+        Prelude.print $ Prelude.flip (/) (1.0 :: Double) (2.0 :: Double) -- returns : 2.0
+        Prelude.print $ Prelude.flip (/) (2.0 :: Double) (1.0 :: Double) -- returns : 0.5
+
+        -- STEP.05
+        -- output the return value of `Prelude.flip` and `(++)`
+        Prelude.print $ Prelude.flip (++) ("Hello" :: String) ("World" :: String) -- returns : "WorldHello"
+        Prelude.print $ Prelude.flip (++) ("World" :: String) ("Hello" :: String) -- returns : "HelloWorld"
+~~~
 
 <!-- EOF -->
