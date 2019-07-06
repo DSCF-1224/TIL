@@ -7,8 +7,15 @@
     * [curry](#Prelude.curry)
     * [fst](#Prelude.fst)
     * [snd](#Prelude.snd)
+  * [Numbers](#Numbers)
+    * [Numeric functions](#Numeric-functions)
+      * [even](#Prelude.even)
+      * [odd](#Prelude.odd)
   * [Miscellaneous functions](#Miscellaneous-functions)
+    * [id](#Prelude.id)
     * [flip](#Prelude.flip)
+* [List operations](#List-operations)
+  * [Operations](#Operations)
 
 ## functions ##
 
@@ -19,10 +26,6 @@
 ##### Prelude.fst` のコード サンプル #####
 
 ~~~Haskell
--- [compiler]
--- GHC 7.10.3
--- GHC 8.4.2
-
 -- modules to import --
 
 import Prelude
@@ -55,10 +58,6 @@ main = do
 ##### `Prelude.snd` のコード サンプル #####
 
 ~~~Haskell
--- [compiler]
--- GHC 7.10.3
--- GHC 8.4.2
-
 -- modules to import --
 
 import Prelude
@@ -95,10 +94,6 @@ Prelude.curry :: ((a, b) -> c) -> a -> b -> c
 ##### Prelude.curry` のコード サンプル #####
 
 ~~~Haskell
--- [compiler]
--- GHC 7.10.3
--- GHC 8.4.2
-
 -- modules to import --
 
 import Prelude
@@ -126,7 +121,105 @@ main = do
     * [fst](#Prelude.fst)
     * [snd](#Prelude.snd)
 
+### Numbers ###
+
+#### Numeric functions ####
+
+##### Prelude.even #####
+
+~~~Haskell
+Prelude.even :: Integral a => a -> Bool
+~~~
+
+##### `Prelude.even` のコード サンプル #####
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        -- STEP.01
+        -- output the return value of `Prelude.even`
+        Prelude.print $ Prelude.even (-2 :: Integer) -- returns : True
+        Prelude.print $ Prelude.even (-1 :: Integer) -- returns : False
+        Prelude.print $ Prelude.even ( 0 :: Integer) -- returns : True
+        Prelude.print $ Prelude.even ( 1 :: Integer) -- returns : False
+        Prelude.print $ Prelude.even ( 2 :: Integer) -- returns : True
+~~~
+
+##### `Prelude.even` の関連項目 #####
+
+* [functions](#functions)
+  * [Numbers](#Numbers)
+    * [Numeric functions](#Numeric-functions)
+      * [odd](#Prelude.odd)
+
+##### Prelude.odd #####
+
+~~~Haskell
+Prelude.odd :: Integral a => a -> Bool
+~~~
+
+##### `Prelude.odd` のコード サンプル #####
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        -- STEP.01
+        -- output the return value of `Prelude.odd`
+        Prelude.print $ Prelude.odd (-2 :: Integer) -- returns : False
+        Prelude.print $ Prelude.odd (-1 :: Integer) -- returns : True
+        Prelude.print $ Prelude.odd ( 0 :: Integer) -- returns : False
+        Prelude.print $ Prelude.odd ( 1 :: Integer) -- returns : True
+        Prelude.print $ Prelude.odd ( 2 :: Integer) -- returns : False
+~~~
+
+##### `Prelude.odd` の関連項目 #####
+
+* [functions](#functions)
+  * [Numbers](#Numbers)
+    * [Numeric functions](#Numeric-functions)
+      * [even](#Prelude.even)
+
 ### Miscellaneous functions ###
+
+#### Prelude.id ####
+
+恒等写像
+
+~~~Haskell
+Prelude.id :: a -> a
+~~~
+
+##### `Prelude.id` のコード サンプル #####
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        Prelude.print $ Prelude.id $ (1 :: Int)                -- returns : 1
+        Prelude.print $ Prelude.id $ ("Hello World" :: String) -- returns : "Hello World"
+        Prelude.print $ Prelude.id $ (1 :: Int, 2 :: Int)      -- returns : (1,2)
+        Prelude.print $ Prelude.id $ [1 :: Int .. 5 :: Int]    -- returns : [1,2,3,4,5]
+~~~
 
 #### Prelude.flip ####
 
@@ -134,7 +227,7 @@ main = do
 Prelude.flip :: (a -> b -> c) -> b -> a -> c
 ~~~
 
-##### Prelude.flip` のコード サンプル #####
+##### `Prelude.flip` のコード サンプル #####
 
 ~~~Haskell
 -- modules to import --
@@ -171,5 +264,45 @@ main = do
         Prelude.print $ Prelude.flip (++) ("Hello" :: String) ("World" :: String) -- returns : "WorldHello"
         Prelude.print $ Prelude.flip (++) ("World" :: String) ("Hello" :: String) -- returns : "HelloWorld"
 ~~~
+
+## List operations ##
+
+### Operations ###
+
+#### Prelude.map ####
+
+~~~Haskell
+Prelude.map :: (a -> b) -> [a] -> [b]
+~~~
+
+##### `Prelude.map` のコード サンプル #####
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        -- STEP.01
+        -- output the return value of `Prelude.map` and `Prelude.even`
+        -- return : [True,False,True,False,True]
+        Prelude.print $ Prelude.map (Prelude.even) [0 :: Int .. 4 :: Int]
+
+        -- STEP.02
+        -- output the return value of `Prelude.map` and `Prelude.odd`
+        -- return : [False,True,False,True,False]
+        Prelude.print $ Prelude.map (Prelude.odd) [0 :: Int .. 4 :: Int]
+~~~
+
+##### `Prelude.map` の関連項目 #####
+
+* [functions](#functions)
+  * [Basic data types](#Basic-data-types)
+    * [even](#Prelude.even)
+    * [odd](#Prelude.odd)
 
 <!-- EOF -->
