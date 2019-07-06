@@ -86,4 +86,44 @@ main = do
     * [curry](#Prelude.curry)
     * [fst](#Prelude.fst)
 
+#### [Prelude.curry](http://hackage.haskell.org/package/base-4.12.0.0/docs/Prelude.html#g:3) ####
+
+~~~Haskell
+Prelude.curry :: ((a, b) -> c) -> a -> b -> c
+~~~
+
+##### Prelude.curry` のコード サンプル #####
+
+~~~Haskell
+-- [compiler]
+-- GHC 7.10.3
+-- GHC 8.4.2
+
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        -- STEP.01
+        -- output the return value of `Prelude.curry` and `Prelude.fst`
+        Prelude.print $ Prelude.curry (Prelude.fst) (1 :: Integer) (2 :: Integer) -- returns : 1
+        Prelude.print $ Prelude.curry (Prelude.fst) (2 :: Integer) (1 :: Integer) -- returns : 2
+
+        -- STEP.02
+        -- output the return value of `Prelude.curry` and `Prelude.snd`
+        Prelude.print $ Prelude.curry (Prelude.snd) (1 :: Integer) (2 :: Integer) -- returns : 2
+        Prelude.print $ Prelude.curry (Prelude.snd) (2 :: Integer) (1 :: Integer) -- returns : 1
+~~~
+
+##### `Prelude.curry` の関連項目 #####
+
+* [functions](#functions)
+  * [Basic data types](#Basic-data-types)
+    * [fst](#Prelude.fst)
+    * [snd](#Prelude.snd)
+
 <!-- EOF -->
