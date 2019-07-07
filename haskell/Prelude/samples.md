@@ -23,6 +23,8 @@
     * [flip](#Prelude.flip)
 * [List operations](#List-operations)
   * [Operations](#Operations)
+    * [filter](#Prelude.filter)
+    * [map](#Prelude.map)
 
 ## functions ##
 
@@ -335,6 +337,7 @@ main = do
 
         -- output the return value of `Prelude.maximum` about (Int, Int)
         Prelude.print $ Prelude.maximum $ (1 :: Int, 2 :: Int) -- returns : 2
+        Prelude.print $ Prelude.maximum $ (2 :: Int, 1 :: Int) -- returns : 1
 ~~~
 
 ##### `Prelude.maximum` の関連項目 #####
@@ -367,6 +370,7 @@ main = do
 
         -- output the return value of `Prelude.minimum` about (Int, Int)
         Prelude.print $ Prelude.minimum $ (1 :: Int, 2 :: Int) -- returns : 2
+        Prelude.print $ Prelude.minimum $ (2 :: Int, 1 :: Int) -- returns : 1
 ~~~
 
 ##### `Prelude.minimum` の関連項目 #####
@@ -410,6 +414,15 @@ main = do
 Prelude.flip :: (a -> b -> c) -> b -> a -> c
 ~~~
 
+##### `Prelude.flip` の定義 #####
+
+~~~Haskell
+flip :: (a -> b -> c) -> b -> a -> c
+flip f x y = f y x
+~~~
+
+[【参照文献】](http://hackage.haskell.org/package/base-4.12.0.0/docs/src/GHC.Base.html#flip)
+
 ##### `Prelude.flip` のコード サンプル #####
 
 ~~~Haskell
@@ -422,27 +435,29 @@ import Prelude
 main :: IO ()
 main = do
 
-        -- STEP.01
+        -- test case 01
         -- output the return value of `Prelude.flip` and `(+)`
         Prelude.print $ Prelude.flip (+) (0.0 :: Double) (1.0 :: Double) -- returns : 1.0
         Prelude.print $ Prelude.flip (+) (1.0 :: Double) (0.0 :: Double) -- returns : 1.0
 
-        -- STEP.02
+        -- test case 02
         -- output the return value of `Prelude.flip` and `(-)`
         Prelude.print $ Prelude.flip (-) (0.0 :: Double) (1.0 :: Double) -- returns :  1.0
         Prelude.print $ Prelude.flip (-) (1.0 :: Double) (0.0 :: Double) -- returns : -1.0
 
-        -- STEP.03
+        -- test case 03
         -- output the return value of `Prelude.flip` and `(*)`
         Prelude.print $ Prelude.flip (*) (1.0 :: Double) (2.0 :: Double) -- returns : 2.0
         Prelude.print $ Prelude.flip (*) (2.0 :: Double) (1.0 :: Double) -- returns : 2.0
 
-        -- STEP.04
+        -- test case 04
         -- output the return value of `Prelude.flip` and `(/)`
         Prelude.print $ Prelude.flip (/) (1.0 :: Double) (2.0 :: Double) -- returns : 2.0
+        Prelude.print $              (/) (2.0 :: Double) (1.0 :: Double) -- returns : 2.0
         Prelude.print $ Prelude.flip (/) (2.0 :: Double) (1.0 :: Double) -- returns : 0.5
+        Prelude.print $              (/) (1.0 :: Double) (2.0 :: Double) -- returns : 0.5
 
-        -- STEP.05
+        -- test case 05
         -- output the return value of `Prelude.flip` and `(++)`
         Prelude.print $ Prelude.flip (++) ("Hello" :: String) ("World" :: String) -- returns : "WorldHello"
         Prelude.print $ Prelude.flip (++) ("World" :: String) ("Hello" :: String) -- returns : "HelloWorld"
@@ -494,5 +509,34 @@ main = do
   * [Basic data types](#Basic-data-types)
     * [even](#Prelude.even)
     * [odd](#Prelude.odd)
+
+#### Prelude.filter ####
+
+~~~Haskell
+Prelude.filter :: (a -> Bool) -> [a] -> [a]
+~~~
+
+##### `Prelude.filter` のコード サンプル #####
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        -- test case 01
+        -- output the return value of `Prelude.filter` and `Prelude.even`
+        -- return : [0,2,4,6,8]
+        Prelude.print $ Prelude.filter (Prelude.even) $ [0 :: Int .. 9 :: Int]
+
+        -- test case 02
+        -- output the return value of `Prelude.map` and `Prelude.odd`
+        -- return : [1,3,5,7,9]
+        Prelude.print $ Prelude.filter (Prelude.odd) $ [0 :: Int .. 9 :: Int]
+~~~
 
 <!-- EOF -->
