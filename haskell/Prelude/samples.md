@@ -10,7 +10,14 @@
   * [Numbers](#Numbers)
     * [Numeric functions](#Numeric-functions)
       * [even](#Prelude.even)
+      * [gcd](#Prelude.gcd)
+      * [lcm](#Prelude.lcm)
       * [odd](#Prelude.odd)
+      * [subtract](#Prelude.subtract)
+    * [Folds and traversals](#Folds-and-traversals)
+      * [elem](#Prelude.elem)
+      * [maximum](#Prelude.maximum)
+      * [minimum](#Prelude.minimum)
   * [Miscellaneous functions](#Miscellaneous-functions)
     * [id](#Prelude.id)
     * [flip](#Prelude.flip)
@@ -125,13 +132,50 @@ main = do
 
 #### Numeric functions ####
 
+##### Prelude.subtract #####
+
+~~~Haskell
+Prelude.subtract :: Num a => a -> a -> a
+~~~
+
+###### `Prelude.subtract` のコード サンプル ######
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        -- STEP.01
+        -- output the return value of `Prelude.subtract`
+        -- returns : -1
+        Prelude.print $ Prelude.subtract     (1 :: Integer) (0 :: Integer)
+        Prelude.print $ Prelude.flip     (-) (1 :: Integer) (0 :: Integer)
+
+        -- STEP.02
+        -- output the return value of `Prelude.subtract`
+        -- returns : 1
+        Prelude.print $ Prelude.subtract     (0 :: Integer) (1 :: Integer)
+        Prelude.print $ Prelude.flip     (-) (0 :: Integer) (1 :: Integer)
+~~~
+
+###### `Prelude.subtract` の関連項目 ######
+
+* [functions](#functions)
+  * [Miscellaneous functions](#Miscellaneous-functions)
+    * [flip](#Prelude.flip)
+
 ##### Prelude.even #####
 
 ~~~Haskell
 Prelude.even :: Integral a => a -> Bool
 ~~~
 
-##### `Prelude.even` のコード サンプル #####
+###### `Prelude.even` のコード サンプル ######
 
 ~~~Haskell
 -- modules to import --
@@ -152,7 +196,7 @@ main = do
         Prelude.print $ Prelude.even ( 2 :: Integer) -- returns : True
 ~~~
 
-##### `Prelude.even` の関連項目 #####
+###### `Prelude.even` の関連項目 ######
 
 * [functions](#functions)
   * [Numbers](#Numbers)
@@ -165,7 +209,7 @@ main = do
 Prelude.odd :: Integral a => a -> Bool
 ~~~
 
-##### `Prelude.odd` のコード サンプル #####
+###### `Prelude.odd` のコード サンプル ######
 
 ~~~Haskell
 -- modules to import --
@@ -186,12 +230,151 @@ main = do
         Prelude.print $ Prelude.odd ( 2 :: Integer) -- returns : False
 ~~~
 
-##### `Prelude.odd` の関連項目 #####
+###### `Prelude.odd` の関連項目 ######
 
 * [functions](#functions)
   * [Numbers](#Numbers)
     * [Numeric functions](#Numeric-functions)
       * [even](#Prelude.even)
+
+##### Prelude.gcd #####
+
+~~~Haskell
+Prelude.gcd :: Integral a => a -> a -> a
+~~~
+
+###### `Prelude.gcd` のコード サンプル ######
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        Prelude.print $ Prelude.gcd (10 :: Integer) (15 :: Integer) -- returns : 5
+        Prelude.print $ Prelude.gcd (12 :: Integer) (18 :: Integer) -- returns : 6
+        Prelude.print $ Prelude.gcd (14 :: Integer) (21 :: Integer) -- returns : 7
+~~~
+
+##### Prelude.lcm #####
+
+~~~Haskell
+Prelude.lcm :: Integral a => a -> a -> a
+~~~
+
+###### `Prelude.lcm` のコード サンプル ######
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        Prelude.print $ Prelude.lcm (10 :: Integer) (15 :: Integer) -- returns : 30
+        Prelude.print $ Prelude.lcm (12 :: Integer) (18 :: Integer) -- returns : 36
+        Prelude.print $ Prelude.lcm (14 :: Integer) (21 :: Integer) -- returns : 42
+~~~
+
+### Folds and traversals ###
+
+#### Prelude.elem ####
+
+~~~Haskell
+Prelude.elem :: Eq a => a -> t a -> a
+~~~
+
+##### `Prelude.elem` のコード サンプル #####
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        -- output the return value of `Prelude.elem` and a list
+        Prelude.print $ Prelude.elem (1 :: Int) [1 :: Int .. 10 :: Int] -- returns : True
+        Prelude.print $ Prelude.elem (0 :: Int) [1 :: Int .. 10 :: Int] -- returns : False
+
+        -- output the return value of `Prelude.elem` and a tuple
+        Prelude.print $ Prelude.elem (1 :: Int) (1 :: Int, 2 :: Int) -- returns : False
+        Prelude.print $ Prelude.elem (0 :: Int) (1 :: Int, 2 :: Int) -- returns : False
+~~~
+
+#### Prelude.maximum ####
+
+~~~Haskell
+Prelude.maximum :: forall a. Ord a => t a -> a
+~~~
+
+##### `Prelude.maximum` のコード サンプル #####
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        -- output the return value of `Prelude.maximum` about [Int]
+        Prelude.print $ Prelude.maximum $ [1 :: Int .. 10 :: Int] -- returns : 10
+
+        -- output the return value of `Prelude.maximum` about (Int, Int)
+        Prelude.print $ Prelude.maximum $ (1 :: Int, 2 :: Int) -- returns : 2
+~~~
+
+##### `Prelude.maximum` の関連項目 #####
+
+* [functions](#functions)
+  * [Numbers](#Numbers)
+    * [Folds and traversals](#Folds-and-traversals)
+      * [minimum](#Prelude.minimum)
+
+#### Prelude.minimum ####
+
+~~~Haskell
+Prelude.minimum :: forall a. Ord a => t a -> a
+~~~
+
+##### `Prelude.minimum` のコード サンプル #####
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        -- output the return value of `Prelude.minimum` about [Int]
+        Prelude.print $ Prelude.minimum $ [1 :: Int .. 10 :: Int] -- returns : 1
+
+        -- output the return value of `Prelude.minimum` about (Int, Int)
+        Prelude.print $ Prelude.minimum $ (1 :: Int, 2 :: Int) -- returns : 2
+~~~
+
+##### `Prelude.minimum` の関連項目 #####
+
+* [functions](#functions)
+  * [Numbers](#Numbers)
+    * [Folds and traversals](#Folds-and-traversals)
+      * [maximum](#Prelude.maximum)
 
 ### Miscellaneous functions ###
 
@@ -264,6 +447,13 @@ main = do
         Prelude.print $ Prelude.flip (++) ("Hello" :: String) ("World" :: String) -- returns : "WorldHello"
         Prelude.print $ Prelude.flip (++) ("World" :: String) ("Hello" :: String) -- returns : "HelloWorld"
 ~~~
+
+##### `Prelude.flip` の関連項目 #####
+
+* [functions](#functions)
+  * [Numbers](#Numbers)
+    * [Numeric functions](#Numeric-functions)
+      * [subtract](#Prelude.subtract)
 
 ## List operations ##
 
