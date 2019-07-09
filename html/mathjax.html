@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<title>Template of the MathJax</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css", href="default.css">
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			displayAlign: "left",
+			displayIndent: "2em",
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']],
+				processEscapes: true
+			},
+			TeX: {
+					equationNumbers: { autoNumber: "AMS" },
+					extensions     : ["AMSmath.js", "AMSsymbols.js", "cancel.js"],
+					Macros : {
+						CnstCirc    : ['\\mathrm{\\pi}'],
+						Diffd       : ['\\unicode{x2146}'],
+						DiffD       : ['\\unicode{x2145}'],
+						mathexclam  : ['\\unicode{x00021}'],
+						MatrixStyle : ['\\boldsymbol{\\CompViscStress}'],
+					}
+			},
+			"HTML-CSS": {
+				availableFonts  : ["STIX"],
+				preferredFont   : "STIX",
+				webFont         : "STIX-Web",
+				matchFontHeight : false,
+				mtextFontInherit: true
+			}
+		});
+		</script>
+		<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML&locale=ja"></script>
+</head>
+<body>
+
+<h1>Template of the MathJax</h1>
+
+<h2>数式環境</h2>
+
+\[
+	\begin{equation}
+		{ \left( \int_{ 0 }^{ \infty } \frac{ \sin x }{ \sqrt{ x } } \,\Diffd x \right) }^{ 2 }
+		= \sum_{ k = 0 }^{ \infty } \frac{ ( 2 k ) \mathexclam }{ { 2 }^{ 2 k } { ( k \mathexclam ) }^{ 2 } } \frac{ 1 }{ 2 k + 1 }
+		= \prod_{ k = 1 }^{ \infty } \frac{ 4 { k }^{ 2 } }{ 4 { k }^{ 2 } - 1 }
+		= \frac{ \CnstCirc }{ 2 }
+	\end{equation}
+\]
+
+\[
+	\begin{equation}
+		\sqrt{ { \left( \frac{ \textstyle    \int_{ 0 }^{ \infty } f ( x ) \,\Diffd x }{ \textstyle    \int_{ 0 }^{ \infty } g ( x ) \,\Diffd x } \right) }^{ n } }
+		\sqrt{ { \left( \frac{ \displaystyle \int_{ 0 }^{ \infty } f ( x ) \,\Diffd x }{ \displaystyle \int_{ 0 }^{ \infty } g ( x ) \,\Diffd x } \right) }^{ n } }
+	\end{equation}
+\]
+
+\[
+	\begin{align}
+		{ \left( \int_{ 0 }^{ \infty } \frac{ \sin x }{ \sqrt{ x } } \,\Diffd x \right) }^{ 2 }
+		&= \sum_{ k = 0 }^{ \infty } \frac{ ( 2 k ) \mathexclam }{ { 2 }^{ 2 k } { ( k \mathexclam ) }^{ 2 } } \frac{ 1 }{ 2 k + 1 } \\%
+		&= \prod_{ k = 1 }^{ \infty } \frac{ 4 { k }^{ 2 } }{ 4 { k }^{ 2 } - 1 } \\%
+		&= \frac{ \CnstCirc }{ 2 }
+	\end{align}
+\]
+
+<h2>参考文献</h2>
+
+<p>
+	<ul>
+		<li><a href="https://fonts.google.com/?subset=japanese"                              target="_blank" rel="noopener noreferrer">Google Fonts</a></li>
+		<li><a href="https://text.baldanders.info/remark/2017/09/getting-started-mathjax-1/" target="_blank" rel="noopener noreferrer">ちょこっと MathJax： 初期設定 — しっぽのさきっちょ | text.Baldanders.info</a></li>
+		<li><a href="http://memopad.bitter.jp/web/mathjax/TeXSyntax.html"                    target="_blank" rel="noopener noreferrer">MathJax で利用可能な TeX コマンド（非公式）</a></li>
+	</ul>
+</p>
+
+</body>
+</html>
