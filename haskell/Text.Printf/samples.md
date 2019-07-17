@@ -28,6 +28,24 @@ main = do
         Text.Printf.printf "%2.1d\n" (1 :: Integer) -- returns :   ␣1
         Text.Printf.printf "%2.2d\n" (1 :: Integer) -- returns :   01
         Text.Printf.printf "%2.3d\n" (1 :: Integer) -- returns :   001
+
+        Text.Printf.printf "%2d\n"   (10 :: Integer) -- returns :   10
+        Text.Printf.printf "%2.0d\n" (10 :: Integer) -- returns :   10
+        Text.Printf.printf "%2.1d\n" (10 :: Integer) -- returns :   10
+        Text.Printf.printf "%2.2d\n" (10 :: Integer) -- returns :   10
+        Text.Printf.printf "%2.3d\n" (10 :: Integer) -- returns :   010
+
+        Text.Printf.printf "%2d\n"   (100 :: Integer) -- returns :   100
+        Text.Printf.printf "%2.0d\n" (100 :: Integer) -- returns :   100
+        Text.Printf.printf "%2.1d\n" (100 :: Integer) -- returns :   100
+        Text.Printf.printf "%2.2d\n" (100 :: Integer) -- returns :   100
+        Text.Printf.printf "%2.3d\n" (100 :: Integer) -- returns :   100
+
+        Text.Printf.printf "%2d\n"   (1000 :: Integer) -- returns :   1000
+        Text.Printf.printf "%2.0d\n" (1000 :: Integer) -- returns :   1000
+        Text.Printf.printf "%2.1d\n" (1000 :: Integer) -- returns :   1000
+        Text.Printf.printf "%2.2d\n" (1000 :: Integer) -- returns :   1000
+        Text.Printf.printf "%2.3d\n" (1000 :: Integer) -- returns :   1000
 ~~~
 
 ## 参考文献 ##
