@@ -8,6 +8,8 @@
     * [fst](#Prelude.fst)
     * [snd](#Prelude.snd)
   * [Numbers](#Numbers)
+    * [Numeric type classes](#Numeric-type-classes)
+      * [truncate](#Prelude.truncate)
     * [Numeric functions](#Numeric-functions)
       * [even](#Prelude.even)
       * [gcd](#Prelude.gcd)
@@ -131,6 +133,53 @@ main = do
     * [snd](#Prelude.snd)
 
 ### Numbers ###
+
+#### Numeric type classes ####
+
+##### Prelude.truncate #####
+
+~~~Haskell
+Prelude.truncate :: Integral b => a -> b
+~~~
+
+###### `Prelude.truncate` のコード サンプル ######
+
+~~~Haskell
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        Prelude.print $ Prelude.truncate (-1.0 :: Double)-- returns : -1
+        Prelude.print $ Prelude.truncate (-0.9 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate (-0.8 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate (-0.7 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate (-0.6 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate (-0.5 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate (-0.4 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate (-0.3 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate (-0.2 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate (-0.1 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate ( 0.0 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate ( 0.1 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate ( 0.2 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate ( 0.3 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate ( 0.4 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate ( 0.5 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate ( 0.6 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate ( 0.7 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate ( 0.8 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate ( 0.9 :: Double)-- returns :  0
+        Prelude.print $ Prelude.truncate ( 1.0 :: Double)-- returns :  1
+~~~
+
+##### `Prelude.truncate` の参考文献 #####
+
+* [中間値のroundによる丸め 〜Haskellのround関数を見て吹き出した件〜 - 定食屋おろポン](http://oropon.hatenablog.com/entry/2014/10/18/031532)
 
 #### Numeric functions ####
 
