@@ -74,4 +74,4 @@ end program main
     * \[51\] [BTEST](https://gcc.gnu.org/onlinedocs/gfortran/BTEST.html#BTEST)
 * [日本ニューメリカルアルゴリズムズグループ株式会社（日本 NAG）](http://www.nag-j.co.jp/index.htm)
   * [Fortran 入門](http://www.nag-j.co.jp/fortran/index.html)
-      * [組込み手続](http://www.nag-j.co.jp/fortran/FI_10.html#_10)
+    * [組込み手続](http://www.nag-j.co.jp/fortran/FI_10.html#_10)
