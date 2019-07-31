@@ -1,9 +1,14 @@
+# =============================================================================================================================== #
 # when you can not carry out this script, change the policy using the command written in the next line
 # Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+# =============================================================================================================================== #
 
-# Write-Host '[Notice]'
-# Write-Host 'The process has been interrupted in order to avoid mistakes.'
-# Exit-PSHostProcess
+Write-Host '[Notice]'
+Write-Host 'The process has been interrupted in order to avoid mistakes.'
+Write-Host 'Please delete the `Exit-PSHostProcess` in the next line to use this script properly.'
+Exit-PSHostProcess
+
+# =============================================================================================================================== #
 
 $str_PathFolderWork = "E:\hoge"
 
