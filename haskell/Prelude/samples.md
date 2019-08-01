@@ -9,6 +9,7 @@
     * [snd](#Prelude.snd)
   * [Numbers](#Numbers)
     * [Numeric type classes](#Numeric-type-classes)
+      * [divMod](#Prelude.divMod)
       * [truncate](#Prelude.truncate)
     * [Numeric functions](#Numeric-functions)
       * [even](#Prelude.even)
@@ -135,6 +136,43 @@ main = do
 ### Numbers ###
 
 #### Numeric type classes ####
+
+##### Prelude.divMod #####
+
+~~~Haskell
+Prelude.divMod :: a -> a -> (a, a)
+~~~
+
+~~~Haskell
+-- [compiler]
+-- GHC 7.10.3
+-- GHC 8.4.2
+
+-- modules to import --
+
+import Prelude
+
+-- the main process is as follows --
+
+main :: IO ()
+main = do
+
+        Prelude.print $ Prelude.fst $ Prelude.divMod (10 :: Integer) (3 :: Integer) -- returns : 3
+        Prelude.print $ Prelude.fst $ Prelude.divMod (10 :: Integer) (5 :: Integer) -- returns : 2
+        Prelude.print $ Prelude.fst $ Prelude.divMod (10 :: Integer) (7 :: Integer) -- returns : 1
+        Prelude.print $ Prelude.fst $ Prelude.divMod (10 :: Integer) (9 :: Integer) -- returns : 1
+
+        Prelude.print $ Prelude.snd $ Prelude.divMod (10 :: Integer) (3 :: Integer) -- returns : 1
+        Prelude.print $ Prelude.snd $ Prelude.divMod (10 :: Integer) (5 :: Integer) -- returns : 0
+        Prelude.print $ Prelude.snd $ Prelude.divMod (10 :: Integer) (7 :: Integer) -- returns : 3
+        Prelude.print $ Prelude.snd $ Prelude.divMod (10 :: Integer) (9 :: Integer) -- returns : 1
+~~~
+
+###### `Prelude.divMod` のコード サンプル ######
+
+~~~Haskell
+Prelude.divMod :: a -> a -> (a, a)
+~~~
 
 ##### Prelude.truncate #####
 
