@@ -3,31 +3,31 @@
 ## 目次 ##
 
 * [functions](#functions)
-  * [Basic data types](#Basic-data-types)
-    * [curry](#Prelude.curry)
-    * [fst](#Prelude.fst)
-    * [snd](#Prelude.snd)
-  * [Numbers](#Numbers)
-    * [Numeric type classes](#Numeric-type-classes)
-      * [divMod](#Prelude.divMod)
-      * [truncate](#Prelude.truncate)
-    * [Numeric functions](#Numeric-functions)
-      * [even](#Prelude.even)
-      * [gcd](#Prelude.gcd)
-      * [lcm](#Prelude.lcm)
-      * [odd](#Prelude.odd)
-      * [subtract](#Prelude.subtract)
-    * [Folds and traversals](#Folds-and-traversals)
-      * [elem](#Prelude.elem)
-      * [maximum](#Prelude.maximum)
-      * [minimum](#Prelude.minimum)
-  * [Miscellaneous functions](#Miscellaneous-functions)
-    * [id](#Prelude.id)
-    * [flip](#Prelude.flip)
+  * [Basic data types](#basic-data-types)
+    * [curry](#preludecurry)
+    * [fst](#preludefst)
+    * [snd](#preludesnd)
+  * [Numbers](#numbers)
+    * [Numeric type classes](#numeric-type-classes)
+      * [divMod](#preludedivMod)
+      * [truncate](#preludetruncate)
+    * [Numeric functions](#numeric-functions)
+      * [even](#preludeeven)
+      * [gcd](#preludegcd)
+      * [lcm](#preludelcm)
+      * [odd](#preludeodd)
+      * [subtract](#preludesubtract)
+    * [Folds and traversals](#folds-and-traversals)
+      * [elem](#preludeelem)
+      * [maximum](#preludemaximum)
+      * [minimum](#preludeminimum)
+  * [Miscellaneous functions](#miscellaneous-functions)
+    * [id](#preludeid)
+    * [flip](#preludeflip)
 * [List operations](#List-operations)
-  * [Operations](#Operations)
-    * [filter](#Prelude.filter)
-    * [map](#Prelude.map)
+  * [Operations](#operations)
+    * [filter](#preludefilter)
+    * [map](#preludemap)
 
 ## functions ##
 
@@ -61,9 +61,9 @@ main = do
 ##### `Prelude.fst` の関連項目 #####
 
 * [functions](#functions)
-  * [Basic data types](#Basic-data-types)
-    * [curry](#Prelude.curry)
-    * [snd](#Prelude.snd)
+  * [Basic data types](#basic-data-types)
+    * [curry](#preludecurry)
+    * [snd](#preludesnd)
 
 #### Prelude.snd ####
 
@@ -93,9 +93,9 @@ main = do
 ##### `Prelude.snd` の関連項目 #####
 
 * [functions](#functions)
-  * [Basic data types](#Basic-data-types)
-    * [curry](#Prelude.curry)
-    * [fst](#Prelude.fst)
+  * [Basic data types](#basic-data-types)
+    * [curry](#preludecurry)
+    * [fst](#preludefst)
 
 #### Prelude.curry ####
 
@@ -129,9 +129,9 @@ main = do
 ##### `Prelude.curry` の関連項目 #####
 
 * [functions](#functions)
-  * [Basic data types](#Basic-data-types)
-    * [fst](#Prelude.fst)
-    * [snd](#Prelude.snd)
+  * [Basic data types](#basic-data-types)
+    * [fst](#preludefst)
+    * [snd](#preludesnd)
 
 ### Numbers ###
 
@@ -255,8 +255,8 @@ main = do
 ###### `Prelude.subtract` の関連項目 ######
 
 * [functions](#functions)
-  * [Miscellaneous functions](#Miscellaneous-functions)
-    * [flip](#Prelude.flip)
+  * [Miscellaneous functions](#miscellaneous-functions)
+    * [flip](#preludeflip)
 
 ##### Prelude.even #####
 
@@ -288,9 +288,9 @@ main = do
 ###### `Prelude.even` の関連項目 ######
 
 * [functions](#functions)
-  * [Numbers](#Numbers)
-    * [Numeric functions](#Numeric-functions)
-      * [odd](#Prelude.odd)
+  * [Numbers](#numbers)
+    * [Numeric functions](#numeric-functions)
+      * [odd](#preludeodd)
 
 ##### Prelude.odd #####
 
@@ -322,9 +322,9 @@ main = do
 ###### `Prelude.odd` の関連項目 ######
 
 * [functions](#functions)
-  * [Numbers](#Numbers)
-    * [Numeric functions](#Numeric-functions)
-      * [even](#Prelude.even)
+  * [Numbers](#numbers)
+    * [Numeric functions](#numeric-functions)
+      * [even](#preludeeven)
 
 ##### Prelude.gcd #####
 
@@ -430,9 +430,9 @@ main = do
 ##### `Prelude.maximum` の関連項目 #####
 
 * [functions](#functions)
-  * [Numbers](#Numbers)
-    * [Folds and traversals](#Folds-and-traversals)
-      * [minimum](#Prelude.minimum)
+  * [Numbers](#numbers)
+    * [Folds and traversals](#folds-and-traversals)
+      * [minimum](#preludeminimum)
 
 #### Prelude.minimum ####
 
@@ -463,9 +463,9 @@ main = do
 ##### `Prelude.minimum` の関連項目 #####
 
 * [functions](#functions)
-  * [Numbers](#Numbers)
-    * [Folds and traversals](#Folds-and-traversals)
-      * [maximum](#Prelude.maximum)
+  * [Numbers](#numbers)
+    * [Folds and traversals](#folds-and-traversals)
+      * [maximum](#preludemaximum)
 
 ### Miscellaneous functions ###
 
@@ -553,9 +553,9 @@ main = do
 ##### `Prelude.flip` の関連項目 #####
 
 * [functions](#functions)
-  * [Numbers](#Numbers)
-    * [Numeric functions](#Numeric-functions)
-      * [subtract](#Prelude.subtract)
+  * [Numbers](#numbers)
+    * [Numeric functions](#numeric-functions)
+      * [subtract](#preludesubtract)
 
 ## List operations ##
 
@@ -593,9 +593,9 @@ main = do
 ##### `Prelude.map` の関連項目 #####
 
 * [functions](#functions)
-  * [Basic data types](#Basic-data-types)
-    * [even](#Prelude.even)
-    * [odd](#Prelude.odd)
+  * [Basic data types](#basic-data-types)
+    * [even](#preludeeven)
+    * [odd](#preludeodd)
 
 #### Prelude.filter ####
 
