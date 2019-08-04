@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap');
+
+body {
+	font-family:  'Noto Serif JP', serif;
+	margin:       25px;
+	margin-left:  25px;
+	margin-right: 25pt;
+}
+
+/* EOF */
