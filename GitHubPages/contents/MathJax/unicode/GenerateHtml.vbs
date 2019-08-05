@@ -21,8 +21,12 @@ Set obj_FSO = CreateObject("Scripting.FileSystemObject")
 
 ' STEP.02
 ' generate the HTML files
-Call GenerateEachHtmlFile("Asana-Math2")
-Call GenerateEachHtmlFile("STIX-Web2")
+Call GenerateEachHtmlFile("Asana-Math")
+Call GenerateEachHtmlFile("Gyre-Pagella")
+Call GenerateEachHtmlFile("Gyre-Termes")
+Call GenerateEachHtmlFile("Latin-Modern")
+Call GenerateEachHtmlFile("Neo-Euler")
+Call GenerateEachHtmlFile("STIX-Web")
 
 ' STEP.03
 ' delete the instance of File System Object
@@ -86,6 +90,7 @@ Sub WriteHeader (ByRef obj_HtmlFileTarget, ByRef str_NameWebFont)
 		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlStartTag("title") & "TIL" & str_HtmlEndTag("title") ) )
 		Call .WriteLine( str_AddIndentsAsTab(1, "<meta" & Space(1) & "charset=" & str_EncloseInQuotes("UTF-8") & ">") )
 		Call .WriteLine( str_AddIndentsAsTab(1, "<link rel=" & str_EncloseInQuotes("stylesheet") & Space(1) & "type=" & str_EncloseInQuotes("text/css") & Space(1) & "href=" & str_EncloseInQuotes("../../../GitHubPages/settings/pattern01.css") & ">") )
+		Call .WriteLine( str_AddIndentsAsTab(1, "<link rel=" & str_EncloseInQuotes("stylesheet") & Space(1) & "type=" & str_EncloseInQuotes("text/css") & Space(1) & "href=" & str_EncloseInQuotes("table.css") & ">") )
 		Call .WriteLine( str_AddIndentsAsTab(1, "<script" & Space(1) & "type=" & str_EncloseInQuotes("text/x-mathjax-config") & ">") )
 		Call .WriteLine( str_AddIndentsAsTab(2, "MathJax.Hub.Config({") )
 		Call .WriteLine( str_AddIndentsAsTab(3, "displayAlign"   & Space(2) & ":" & Space(1) & str_EncloseInQuotes("left") & ",") )
@@ -121,14 +126,86 @@ Sub WriteBody (ByRef obj_HtmlFileTarget, ByRef str_NameWebFont)
 
 		Call .WriteLine( str_AddIndentsAsTab(0, str_EncloseInHtmlTag("h1", "TIL" & str_HtmlStartTag("br") & "MathJax" & str_HtmlStartTag("br") & str_NameWebFont) ) )
 
+		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlStartTag("div class=" & str_EncloseInQuotes("Tbl-MathJax-Unicode") ) ) )
 		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlStartTag("table") ) )
+
 		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlStartTag("thead") ) )
+		Call .WriteLine( str_AddIndentsAsTab(2, str_HtmlStartTag("tr") ) )
+		Call .WriteLine( str_AddIndentsAsTab(3, str_EncloseInHtmlTag("th", "USV") ) )
+		Call .WriteLine( str_AddIndentsAsTab(3, str_EncloseInHtmlTag("th", "defalut") ) )
+		Call .WriteLine( str_AddIndentsAsTab(3, str_EncloseInHtmlTag("th", "Garamond") ) )
+		Call .WriteLine( str_AddIndentsAsTab(3, str_EncloseInHtmlTag("th", "Times New Roman") ) )
+		Call .WriteLine( str_AddIndentsAsTab(3, str_EncloseInHtmlTag("th", "Description") ) )
+		Call .WriteLine( str_AddIndentsAsTab(2, str_HtmlEndTag("tr") ) )
 		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlEndTag("thead") ) )
+
 		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlStartTag("tbody") ) )
+
+		Call addTableData(obj_HtmlFileTarget, "0391", "capital alpha, greek")
+		Call addTableData(obj_HtmlFileTarget, "0392", "capital beta, greek")
+		Call addTableData(obj_HtmlFileTarget, "0393", "capital gamma, greek")
+		Call addTableData(obj_HtmlFileTarget, "0394", "capital delta, greek")
+		Call addTableData(obj_HtmlFileTarget, "0395", "capital epsilon, greek")
+		Call addTableData(obj_HtmlFileTarget, "0396", "capital zeta, greek")
+		Call addTableData(obj_HtmlFileTarget, "0397", "capital eta, greek")
+		Call addTableData(obj_HtmlFileTarget, "0398", "capital theta, greek")
+		Call addTableData(obj_HtmlFileTarget, "0399", "capital iota, greek")
+		Call addTableData(obj_HtmlFileTarget, "039A", "capital kappa, greek")
+		Call addTableData(obj_HtmlFileTarget, "039B", "capital lambda, greek")
+		Call addTableData(obj_HtmlFileTarget, "039C", "capital mu, greek")
+		Call addTableData(obj_HtmlFileTarget, "039D", "capital nu, greek")
+		Call addTableData(obj_HtmlFileTarget, "039E", "capital xi, greek")
+		Call addTableData(obj_HtmlFileTarget, "039F", "capital omicron, greek")
+		Call addTableData(obj_HtmlFileTarget, "03A0", "capital pi, greek")
+		Call addTableData(obj_HtmlFileTarget, "03A1", "capital rho, greek")
+		Call addTableData(obj_HtmlFileTarget, "03A3", "capital sigma, greek")
+		Call addTableData(obj_HtmlFileTarget, "03A4", "capital tau, greek")
+		Call addTableData(obj_HtmlFileTarget, "03A5", "capital upsilon, greek")
+		Call addTableData(obj_HtmlFileTarget, "03A6", "capital phi, greek")
+		Call addTableData(obj_HtmlFileTarget, "03A7", "capital chi, greek")
+		Call addTableData(obj_HtmlFileTarget, "03A8", "capital psi, greek")
+		Call addTableData(obj_HtmlFileTarget, "03A9", "capital omega, greek")
+		Call addTableData(obj_HtmlFileTarget, "03B1", "small alpha, greek")
+		Call addTableData(obj_HtmlFileTarget, "03B2", "small beta, greek")
+		Call addTableData(obj_HtmlFileTarget, "03B3", "small gamma, greek")
+		Call addTableData(obj_HtmlFileTarget, "03B4", "small delta, greek")
+		Call addTableData(obj_HtmlFileTarget, "03B5", "small epsilon, greek")
+		Call addTableData(obj_HtmlFileTarget, "03B6", "small zeta, greek")
+		Call addTableData(obj_HtmlFileTarget, "03B7", "small eta, greek")
+		Call addTableData(obj_HtmlFileTarget, "03B8", "small theta, greek")
+		Call addTableData(obj_HtmlFileTarget, "03B9", "small iota, greek")
+		Call addTableData(obj_HtmlFileTarget, "03BA", "small kappa, greek")
+		Call addTableData(obj_HtmlFileTarget, "03BB", "small lambda, greek")
+		Call addTableData(obj_HtmlFileTarget, "03BC", "small mu, greek")
+		Call addTableData(obj_HtmlFileTarget, "03BD", "small nu, greek")
+		Call addTableData(obj_HtmlFileTarget, "03BE", "small xi, greek")
+		Call addTableData(obj_HtmlFileTarget, "03BF", "small omicron, greek")
+		Call addTableData(obj_HtmlFileTarget, "03C0", "small pi, greek")
+		Call addTableData(obj_HtmlFileTarget, "03C1", "small rho, greek")
+		Call addTableData(obj_HtmlFileTarget, "03C3", "small sigma, greek")
+		Call addTableData(obj_HtmlFileTarget, "03C4", "small tau, greek")
+		Call addTableData(obj_HtmlFileTarget, "03C5", "small upsilon, greek")
+		Call addTableData(obj_HtmlFileTarget, "03C6", "small phi, greek")
+		Call addTableData(obj_HtmlFileTarget, "03C7", "small chi, greek")
+		Call addTableData(obj_HtmlFileTarget, "03C8", "small psi, greek")
+		Call addTableData(obj_HtmlFileTarget, "03C9", "small omega, greek")
+
+		Call addTableData(obj_HtmlFileTarget, "2145", "double-struck capital small d")
+		Call addTableData(obj_HtmlFileTarget, "2146", "double-struck capital small D")
+		Call addTableData(obj_HtmlFileTarget, "2147", "double-struck capital small e")
+		Call addTableData(obj_HtmlFileTarget, "2148", "double-struck capital small i")
+		Call addTableData(obj_HtmlFileTarget, "2149", "double-struck capital small j")
+
+		Call addTableData(obj_HtmlFileTarget, "21BA", "anticlockwise open circle arrow")
+		Call addTableData(obj_HtmlFileTarget, "21BB", "clockwise open circle arrow")
+
 		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlEndTag("tbody") ) )
+
 		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlStartTag("tfoot") ) )
 		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlEndTag("tfoot") ) )
+
 		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlEndTag("table") ) )
+		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlEndTag("div") ) )
 
 		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlEndTag("body") ) )
 
@@ -197,5 +274,23 @@ Function str_EncloseInHtmlTag (ByRef str_NameTag, ByRef str_target)
 	str_EncloseInHtmlTag = str_HtmlStartTag(str_NameTag) & str_target & str_HtmlEndTag(str_NameTag)
 	Exit Function
 End Function
+
+Sub addTableData (ByRef obj_HtmlFileTarget, ByVal val_USV, ByVal str_Description)
+
+	With obj_HtmlFileTarget
+
+		Call .WriteLine( str_AddIndentsAsTab(2, str_HtmlStartTag("tr") ) )
+		Call .WriteLine( str_AddIndentsAsTab(3, str_EncloseInHtmlTag("td", "U+0" & val_USV) ) )
+		Call .WriteLine( str_AddIndentsAsTab(3, str_EncloseInHtmlTag("td", "\(\unicode{x"                  & val_USV & "}\)") ) )
+		Call .WriteLine( str_AddIndentsAsTab(3, str_EncloseInHtmlTag("td", "\(\unicode[Garamond]{x"        & val_USV & "}\)") ) )
+		Call .WriteLine( str_AddIndentsAsTab(3, str_EncloseInHtmlTag("td", "\(\unicode[Times New Roman]{x" & val_USV & "}\)") ) )
+		Call .WriteLine( str_AddIndentsAsTab(3, str_EncloseInHtmlTag("td", str_Description) ) )
+		Call .WriteLine( str_AddIndentsAsTab(2, str_HtmlEndTag("tr") ) )
+		
+	End With
+
+	Exit Sub
+
+End Sub
 
 ' EOF
