@@ -1,24 +1,42 @@
 /* table class */
-.Tbl-MathJax-Unicode table thead {
+table.Tbl-MathJax-Unicode {
+	border-width    : 1px;
+	border-collapse : collapse;
+	margin-bottom   : 5ex;
+}
+
+table.Tbl-MathJax-Unicode thead {
 	/* font-family      : 'Fira Code', monospace; */
 	background-color : black;
 	color            : white;
 }
 
-.Tbl-MathJax-Unicode table thead th {
-	padding-bottom   :  5px;
-	padding-left     : 10px;
-	padding-right    : 10px;
-	padding-top      :  5px;
+table.Tbl-MathJax-Unicode thead th {
+	padding-bottom :  5px;
+	padding-left   : 10px;
+	padding-right  : 10px;
+	padding-top    :  5px;
 }
 
-.Tbl-MathJax-Unicode table td {
-	padding-bottom   :  5px;
-	padding-left     : 10px;
-	padding-right    : 10px;
-	padding-top      :  5px;
+table.Tbl-MathJax-Unicode td {
+	/* border-color */
+	border-color: black;
+	/* border-style */
+	border-style: solid;
+	/* border-width */
+	border-bottom-width : 1px;
+	border-left-width   : 0px;
+	border-right-width  : 0px;
+	border-top-width    : 1px;
+	/* padding */
+	padding-bottom :  5px;
+	padding-left   : 10px;
+	padding-right  : 10px;
+	padding-top    :  5px;
 }
 
-/* .Tbl-MathJax-Unicode table tr :nth-of-type(1)  { font-family : 'Fira Code', monospace; } */
-.Tbl-MathJax-Unicode table tr :nth-child(even) td { background-color : lightgray; }
-.Tbl-MathJax-Unicode table tr :nth-child(odd)  td { background-color : white; }
+/* table.Tbl-MathJax-Unicode tr :nth-of-type(1)  { font-family : 'Fira Code', monospace; } */
+table.Tbl-MathJax-Unicode tr :nth-child(even) td { background-color : gray; }
+table.Tbl-MathJax-Unicode tr :nth-child(odd)  td { background-color : white; }
+
+/* EOF */

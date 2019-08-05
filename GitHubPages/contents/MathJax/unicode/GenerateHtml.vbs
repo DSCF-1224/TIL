@@ -82,13 +82,13 @@ Sub WriteHeader (ByRef obj_HtmlFileTarget, ByRef str_NameWebFont)
 
 	With obj_HtmlFileTarget
 
-		Call .WriteLine( str_AddIndentsAsTab(0, "<!DOCTYPE html>") )
-		Call .WriteLine( str_AddIndentsAsTab(0, "<html" & Space(1) & "lang=" & str_EncloseInQuotes("ja") & ">") )
+		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlStartTag("!DOCTYPE HTML") ) )
+		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlStartTag("html" & Space(1) & "lang=" & str_EncloseInQuotes("ja") ) ) )
 
 		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlStartTag("head") ) )
 
-		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlStartTag("title") & "TIL" & str_HtmlEndTag("title") ) )
-		Call .WriteLine( str_AddIndentsAsTab(1, "<meta" & Space(1) & "charset=" & str_EncloseInQuotes("UTF-8") & ">") )
+		Call .WriteLine( str_AddIndentsAsTab(1, str_EncloseInHtmlTag("title", "TIL" ) ) )
+		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlStartTag    ("meta" & Space(1) & "charset=" & str_EncloseInQuotes("UTF-8") & "/") ) )
 		Call .WriteLine( str_AddIndentsAsTab(1, "<link rel=" & str_EncloseInQuotes("stylesheet") & Space(1) & "type=" & str_EncloseInQuotes("text/css") & Space(1) & "href=" & str_EncloseInQuotes("../../../GitHubPages/settings/pattern01.css") & ">") )
 		Call .WriteLine( str_AddIndentsAsTab(1, "<link rel=" & str_EncloseInQuotes("stylesheet") & Space(1) & "type=" & str_EncloseInQuotes("text/css") & Space(1) & "href=" & str_EncloseInQuotes("table.css") & ">") )
 		Call .WriteLine( str_AddIndentsAsTab(1, "<script" & Space(1) & "type=" & str_EncloseInQuotes("text/x-mathjax-config") & ">") )
@@ -126,8 +126,7 @@ Sub WriteBody (ByRef obj_HtmlFileTarget, ByRef str_NameWebFont)
 
 		Call .WriteLine( str_AddIndentsAsTab(0, str_EncloseInHtmlTag("h1", "TIL" & str_HtmlStartTag("br") & "MathJax" & str_HtmlStartTag("br") & str_NameWebFont) ) )
 
-		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlStartTag("div class=" & str_EncloseInQuotes("Tbl-MathJax-Unicode") ) ) )
-		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlStartTag("table") ) )
+		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlStartTag("table class=" & str_EncloseInQuotes("Tbl-MathJax-Unicode") ) ) )
 
 		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlStartTag("thead") ) )
 		Call .WriteLine( str_AddIndentsAsTab(2, str_HtmlStartTag("tr") ) )
@@ -205,7 +204,8 @@ Sub WriteBody (ByRef obj_HtmlFileTarget, ByRef str_NameWebFont)
 		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlEndTag("tfoot") ) )
 
 		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlEndTag("table") ) )
-		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlEndTag("div") ) )
+
+		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlStartTag("hr") ) )
 
 		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlEndTag("body") ) )
 
@@ -238,7 +238,12 @@ Function str_AddIndentsAsTab (ByRef int_NumIndents, ByRef str_target)
 
 	' STEP.01
 	' Initialize the return value of this function
-	str_AddIndentsAsTab = ""
+	If int_NumIndents = 0 Then
+		str_AddIndentsAsTab = str_target
+		Exit Function
+	Else
+		str_AddIndentsAsTab = ""
+	End If
 
 	' STEP.02
 	' Add tabs as the index
@@ -260,13 +265,13 @@ Function str_EncloseInQuotes (ByRef str_target)
 	Exit Function
 End Function
 
-Function str_HtmlEndTag (ByRef str_NameTag)
-	str_HtmlEndTag = "</" & str_NameTag & ">"
+Function str_HtmlStartTag (ByRef str_NameTag)
+	str_HtmlStartTag = "<" & str_NameTag & ">"
 	Exit Function
 End Function
 
-Function str_HtmlStartTag (ByRef str_NameTag)
-	str_HtmlStartTag = "<" & str_NameTag & ">"
+Function str_HtmlEndTag (ByRef str_NameTag)
+	str_HtmlEndTag = str_HtmlStartTag("/" & str_NameTag)
 	Exit Function
 End Function
 
