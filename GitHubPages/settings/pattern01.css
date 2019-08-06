@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Fira+Code&display=swap');
 
@@ -6,6 +7,14 @@ body {
 	margin:       25px;
 	margin-left:  25px;
 	margin-right: 25pt;
+}
+
+input.BottonHref {
+	margin: 10pt;
+}
+
+@media print {
+	input.BottonHref { display: none; }
 }
 
 /* EOF */

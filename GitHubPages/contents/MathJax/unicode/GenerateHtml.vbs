@@ -89,7 +89,7 @@ Sub WriteHeader (ByRef obj_HtmlFileTarget, ByRef str_NameWebFont)
 
 		Call .WriteLine( str_AddIndentsAsTab(1, str_EncloseInHtmlTag("title", "TIL" ) ) )
 		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlStartTag    ("meta" & Space(1) & "charset=" & str_EncloseInQuotes("UTF-8") & "/") ) )
-		Call .WriteLine( str_AddIndentsAsTab(1, "<link rel=" & str_EncloseInQuotes("stylesheet") & Space(1) & "type=" & str_EncloseInQuotes("text/css") & Space(1) & "href=" & str_EncloseInQuotes("../../../GitHubPages/settings/pattern01.css") & ">") )
+		Call .WriteLine( str_AddIndentsAsTab(1, "<link rel=" & str_EncloseInQuotes("stylesheet") & Space(1) & "type=" & str_EncloseInQuotes("text/css") & Space(1) & "href=" & str_EncloseInQuotes("https://raw.githubusercontent.com/DSCF-1224/TIL/master/GitHubPages/settings/pattern01.css") & ">") )
 		Call .WriteLine( str_AddIndentsAsTab(1, "<link rel=" & str_EncloseInQuotes("stylesheet") & Space(1) & "type=" & str_EncloseInQuotes("text/css") & Space(1) & "href=" & str_EncloseInQuotes("table.css") & ">") )
 		Call .WriteLine( str_AddIndentsAsTab(1, "<script" & Space(1) & "type=" & str_EncloseInQuotes("text/x-mathjax-config") & ">") )
 		Call .WriteLine( str_AddIndentsAsTab(2, "MathJax.Hub.Config({") )
@@ -189,23 +189,21 @@ Sub WriteBody (ByRef obj_HtmlFileTarget, ByRef str_NameWebFont)
 		Call addTableData(obj_HtmlFileTarget, "03C8", "small psi, greek")
 		Call addTableData(obj_HtmlFileTarget, "03C9", "small omega, greek")
 
-		Call addTableData(obj_HtmlFileTarget, "2145", "double-struck capital small d")
-		Call addTableData(obj_HtmlFileTarget, "2146", "double-struck capital small D")
-		Call addTableData(obj_HtmlFileTarget, "2147", "double-struck capital small e")
-		Call addTableData(obj_HtmlFileTarget, "2148", "double-struck capital small i")
-		Call addTableData(obj_HtmlFileTarget, "2149", "double-struck capital small j")
+		Call addTableData(obj_HtmlFileTarget, "2145", "double-struck small d")
+		Call addTableData(obj_HtmlFileTarget, "2146", "double-struck capital D")
+		Call addTableData(obj_HtmlFileTarget, "2147", "double-struck small e")
+		Call addTableData(obj_HtmlFileTarget, "2148", "double-struck small i")
+		Call addTableData(obj_HtmlFileTarget, "2149", "double-struck small j")
 
 		Call addTableData(obj_HtmlFileTarget, "21BA", "anticlockwise open circle arrow")
 		Call addTableData(obj_HtmlFileTarget, "21BB", "clockwise open circle arrow")
 
 		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlEndTag("tbody") ) )
-
-		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlStartTag("tfoot") ) )
-		Call .WriteLine( str_AddIndentsAsTab(1, str_HtmlEndTag("tfoot") ) )
-
 		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlEndTag("table") ) )
 
 		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlStartTag("hr") ) )
+		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlStartTag("input" & Space(1) & "class=" & str_EncloseInQuotes("BottonHref") & Space(1) & "type=" & str_EncloseInQuotes("button") & Space(1) & "onclick=" & str_EncloseInQuotes("location.href='" & "https://dscf-1224.github.io/TIL/" & "'") & Space(1) & "value=" & str_EncloseInQuotes("Top Page")      ) ) )
+		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlStartTag("input" & Space(1) & "class=" & str_EncloseInQuotes("BottonHref") & Space(1) & "type=" & str_EncloseInQuotes("button") & Space(1) & "onclick=" & str_EncloseInQuotes("location.href='" & "https://github.com/DSCF-1224/TIL" & "'") & Space(1) & "value=" & str_EncloseInQuotes("GitHub of TIL") ) ) )
 
 		Call .WriteLine( str_AddIndentsAsTab(0, str_HtmlEndTag("body") ) )
 
