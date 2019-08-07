@@ -14,25 +14,26 @@ Throw "This script was interrupted."
 Trap { Break }
 
 # =============================================================================================================================== #
+# Main procedure of this script is as below
+# =============================================================================================================================== #
 
-Set-Variable -Name str_PathFolderWork -Value "E:\hoge"
+Set-Variable -Name str_PathFolder -Value "C:\hoge"
 
-Set-Variable -Name str_NameFileTargetToZip -value "*.csv"
-Set-Variable -Name str_PathFileTargetToZip -value (Join-Path $str_PathFolderWork $str_NameFileTargetToZip)
+if ( Test-Path($str_PathFolder) ) {
+	# This block is executed when the target folder existed
+	[System.Windows.Forms.MessageBox]::Show(
+		"The target folder was detected." + "`r`n" + "[PATH] " + $str_PathFolder, `
+		"Information", `
+		"OK", `
+		"Information"
+	)
+} else {
+	# This block is executed when the target folder does not exist
+	Throw "The target folder is not detected !" + "`r`n" + "[PATH] " + $str_PathFolder
+}
 
-Set-Variable -Name str_DateNow      -Value (Get-Date -Format "yyyyMMdd")
-Set-Variable -Name str_TimeNow      -Value (Get-Date -Format "HHmmss")
-Set-Variable -Name str_NameZipFile  -Value ("VER_" + $str_DateNow + "_" + $str_TimeNow + ".zip")
-Set-Variable -Name str_PathZipFile  -Value (Join-Path $str_PathFolderWork $str_NameZipFile)
-
-Compress-Archive -Path $str_PathFileTargetToZip -DestinationPath $str_PathZipFile -CompressionLevel Optimal
-
-[System.Windows.Forms.MessageBox]::Show(
-	"The process has finished successfully.", `
-	"Information", `
-	"OK", `
-	"Information"
-)
+# This `Trap` is executed if when the target folder does not exist
+Trap { Break }
 
 # =============================================================================================================================== #
 # EOF

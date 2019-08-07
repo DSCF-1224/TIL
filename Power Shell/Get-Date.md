@@ -28,6 +28,13 @@ PS C:\Users\Hoge> Get-Date -Format "yyyyMMdd"
 20190731
 ```
 
+```PowerShell
+C:\WINDOWS\system32> (Get-Date -Format "yyyy")                               # return : 2019
+C:\WINDOWS\system32> (Get-Date -Format "yyyy").GetType().BaseType            # return : System.String
+C:\WINDOWS\system32> (Get-Date -Format "yyyyMMdd_HHmmss")                    # return : 20190807_231205
+C:\WINDOWS\system32> (Get-Date -Format "yyyyMMdd_HHmmss").GetType().FullName # return : System.String
+```
+
 ## 参考文献 ##
 
 * [PowerShell Documentation](https://docs.microsoft.com/ja-jp/powershell/?view=powershell-6)
