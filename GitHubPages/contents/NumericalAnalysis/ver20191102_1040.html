@@ -118,24 +118,72 @@
 			\\
 			\phi \lbrack i , n + 1 \rbrack
 			&=
-			\phi \lbrack i , n \rbrack + \frac{ 1 }{ 2 } \cdot \Delta t \cdot 
+			\phi \lbrack i , n \rbrack + \dfrac{ 1 }{ 2 } \cdot \Delta t \cdot 
 			\biggl \lbrace
 				\textcolor{#03af7a}{ \underbrace{ \textcolor{black}{ u \lbrack i , n     \rbrack \cdot \frac{         \phi   \lbrack i - 1 , n \rbrack -         \phi   \lbrack i , n \rbrack }{ \Delta x } } }_{ \Phi \lbrack i , n     \rbrack } } + 
 				\textcolor{#03af7a}{ \underbrace{ \textcolor{black}{ u \lbrack i , n + 1 \rbrack \cdot \frac{ \tilde{ \phi } \lbrack i - 1 , n \rbrack - \tilde{ \phi } \lbrack i , n \rbrack }{ \Delta x } } }_{ \Phi \lbrack i , n + 1 \rbrack } }
+				\vphantom{ \biggl \lbrace \biggr \rbrace }
 			\biggr \rbrace
 			\\ &=
-			\phi \lbrack i , n \rbrack + \frac{ 1 }{ 2 } \cdot \Delta t \cdot \biggl \lbrace \tilde{ \phi } \lbrack i , n \rbrack + \textcolor{#03af7a}{ \underbrace{ \textcolor{black}{ u \lbrack i , n + 1 \rbrack \cdot \frac{ \tilde{ \phi } \lbrack i - 1 , n \rbrack - \tilde{ \phi } \lbrack i , n \rbrack }{ \Delta x } } }_{ \Phi \lbrack i , n + 1 \rbrack } } \biggr \rbrace
+			\phi \lbrack i , n \rbrack + \dfrac{ 1 }{ 2 } \cdot \Delta t \cdot \biggl \lbrace \tilde{ \phi } \lbrack i , n \rbrack + \textcolor{#03af7a}{ \underbrace{ \textcolor{black}{ u \lbrack i , n + 1 \rbrack \cdot \frac{ \tilde{ \phi } \lbrack i - 1 , n \rbrack - \tilde{ \phi } \lbrack i , n \rbrack }{ \Delta x } } }_{ \Phi \lbrack i , n + 1 \rbrack } } \biggr \rbrace
 		\end{align}
 		ないし，次の式が考えられる．
 		\begin{align}
-			\tilde{ \phi } \bigl \lbrack i , n + ( 1 / 2 ) \bigr \rbrack
+			\tilde{ \phi } \left \lbrack i , n + \dfrac{ 1 }{ 2 } \right \rbrack
 			&=
-			\phi \lbrack i , n \rbrack + \frac{ 1 }{ 2 } \Delta t \cdot \textcolor{#03af7a}{ \underbrace{ \textcolor{black}{ u \lbrack i , n \rbrack \cdot \frac{ \phi \lbrack i - 1 , n \rbrack - \phi \lbrack i , n \rbrack }{ \Delta x } } }_{ \Phi \lbrack i , n \rbrack } }
+			\phi \lbrack i , n \rbrack + \dfrac{ 1 }{ 2 } \Delta t \cdot \textcolor{#03af7a}{ \underbrace{ \textcolor{black}{ u \lbrack i , n \rbrack \cdot \frac{ \phi \lbrack i - 1 , n \rbrack - \phi \lbrack i , n \rbrack }{ \Delta x } } }_{ \Phi \lbrack i , n \rbrack } }
 			\\
 			\phi \lbrack i , n \rbrack
 			&=
-			\phi \lbrack i , n \rbrack + \Delta t \cdot \textcolor{#03af7a}{ \underbrace{ \textcolor{black}{ u \bigl \lbrack i , n + ( 1 / 2 ) \bigr \rbrack \cdot \frac{ \tilde{ \phi } \bigl \lbrack i - 1 , n + ( 1 / 2 ) \bigr \rbrack - \tilde{ \phi } \bigl \lbrack i , n + ( 1 / 2 ) \bigr \rbrack }{ \Delta x } } }_{ \Phi \left \lbrack i , n + ( 1 / 2 ) \right \rbrack } }
+			\phi \lbrack i , n \rbrack + \Delta t \cdot \textcolor{#03af7a}{ \underbrace{ \textcolor{black}{ u \left \lbrack i , n + \dfrac{ 1 }{ 2 } \right \rbrack \cdot \frac{ \tilde{ \phi } \left \lbrack i - 1 , n + \dfrac{ 1 }{ 2 } \right \rbrack - \tilde{ \phi } \left \lbrack i , n + \dfrac{ 1 }{ 2 } \right \rbrack }{ \Delta x } } }_{ \Phi \left \lbrack i , n + ( 1 / 2 ) \right \rbrack } }
 		\end{align}
+
+		<h3>1次風上差分 & 4次Runge-Kutta法</h3>
+
+		移流方程式
+		\eqref{eqn:advection equation:1D}
+		の時間微分
+		\( \partial \phi / \partial t \)
+		と空間微分
+		\( \partial \phi / \partial x \)
+		を共に1次精度の差分に置換した式
+		\eqref{eqn:advection equation:1D:spacial-first-order-upwind:time-Euler:data at pre step and variation:not using Courant number}
+		より，
+		\begin{align}
+			{ \psi }_{ 1 } \lbrack i , n \rbrack
+			&=
+			\Delta t \cdot u \lbrack i , n \rbrack \cdot \frac{ \phi \lbrack i - 1 , n \rbrack - \phi \lbrack i , n \rbrack }{ \Delta x }
+			\\
+			{ \psi }_{ 2 } \lbrack i , n \rbrack
+			&=
+			\Delta t \cdot u \left \lbrack i , n + \dfrac{ 1 }{ 2 } \right \rbrack \cdot \frac{ \tilde{ \phi } \left \lbrack i - 1 , n + \dfrac{ 1 }{ 2 } \right \rbrack - \tilde{ \phi } \left \lbrack i , n + \dfrac{ 1 }{ 2 } \right \rbrack }{ \Delta x }
+			&
+			\tilde{ \phi } \left \lbrack i , n + \frac{ 1 }{ 2 } \right \rbrack
+			&=
+			\phi \lbrack i , n \rbrack + \frac{ 1 }{ 2 } { \psi }_{ 1 } \lbrack i , n \rbrack
+			\\
+			{ \psi }_{ 3 } \lbrack i , n \rbrack
+			&=
+			\Delta t \cdot u \left \lbrack i , n + \dfrac{ 1 }{ 2 } \right \rbrack \cdot \frac{ \tilde{ \tilde{ \phi } } \left \lbrack i - 1 , n + \dfrac{ 1 }{ 2 } \right \rbrack - \tilde{ \tilde{ \phi } } \left \lbrack i , n + \dfrac{ 1 }{ 2 } \right \rbrack }{ \Delta x }
+			&
+			\tilde{ \tilde{ \phi } } \left \lbrack i , n + \dfrac{ 1 }{ 2 } \right \rbrack
+			&=
+			\phi \lbrack i , n \rbrack + \frac{ 1 }{ 2 } { \psi }_{ 2 } \lbrack i , n \rbrack
+			\\
+			{ \psi }_{ 4 } \lbrack i , n \rbrack
+			&=
+			\Delta t \cdot u \lbrack i , n \rbrack \cdot \frac{ \tilde{ \tilde{ \tilde{ \phi } } } \lbrack i - 1 , n \rbrack - \tilde{ \tilde{ \tilde{ \phi } } } \lbrack i , n \rbrack }{ \Delta x }
+			&
+			\tilde{ \tilde{ \tilde{ \phi } } } \lbrack i , n \rbrack
+			&=
+			\phi \lbrack i , n \rbrack + { \psi }_{ 3 } \lbrack i , n \rbrack
+			\\
+			\phi \lbrack n , i + 1 \rbrack
+			&=
+			\phi \lbrack n , i \rbrack + \dfrac{ 1 }{ 6 } \bigl ( { \psi }_{ 1 } \lbrack i , n \rbrack + 2 { \psi }_{ 2 } \lbrack i , n \rbrack + 2 { \psi }_{ 3 } \lbrack i , n \rbrack + { \psi }_{ 4 } \lbrack i , n \rbrack \bigr )
+		\end{align}
+
+
 
 		<h2>参考文献</h2>
 
