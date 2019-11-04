@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<title>TIL</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/DSCF-1224/TIL/master/GitHubPages/settings/pattern01.css">
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			displayAlign  : "left",
+			displayIndent : "2em",
+			tex2jax : {
+				inlineMath     : [['$','$'], ['\\(','\\)']],
+				processEscapes : true,
+			},
+			TeX : {
+				equationNumbers : { autoNumber : "AMS" },
+				extensions: ['color.js'],
+				Macros : {
+					CnstCirc    : ['\\mathrm{\\pi}'],
+					Diffd       : ['d'],
+					DiffD       : ['D'],
+					mathexclam  : ['\\unicode{x00021}'],
+					MatrixStyle : ['\\boldsymbol{\\CompViscStress}'],
+				}
+			},
+			"HTML-CSS" : {
+				webFont : "STIX-Web",
+			},
+		});
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&locale=ja"></script>
+</head>
+<body>
+
+	<main>
+		<h1>数値解析</h1>
+
+		<h2>万有引力下での多体問題の数値解法</h2>
+
+		<h3>支配方程式</h3>
+
+		<p>
+			\( N \)
+			個の質点の運動について検討する．
+			<br>
+			変数
+			\( t \)
+			は時刻を表すものとする．
+			<br>
+			\( i = 1 , 2 , \cdots , N \)
+			番目の質点の質量を
+			\( { m }_{ i } \)
+			とする．
+			<br>
+			直交座標系
+			\( ( x , y , z ) \)
+			を設定し，
+			\( i = 1 , 2 , \dots , N \)
+			番目の質点の質量を
+			\( { m }_{ i } \)
+			，座標を
+			\( ( { x }_{ i } , { y }_{ i } , { z }_{ i } ) \)
+			で表すことにする．
+			<br>
+			また，
+			\( \vec{ r }_{ i } := { x }_{ i } \vec{ e }_{ \mathrm{ x } } + { y }_{ i } \vec{ e }_{ \mathrm{ y } } + { z }_{ i } \vec{ e }_{ \mathrm{ z } } \)とする．
+		</p>
+		<p>
+			時刻
+			\( t \)
+			に質点
+			\( i \)
+			が同
+			\( j \)
+			から受ける力を
+			\( \vec{ F } ( t , i , j ) \)
+			で表すことにすると，
+			\begin{equation}
+				- \frac{ { \Diffd }^{ 2 } \vec{ r }_{ i } ( t ) }{ \Diffd { t }^{ 2 } } + \sum_{ j = 1 , j \neq i }^{ N } \vec{ F } ( t , i , j ) = \vec{ 0 }
+			\end{equation}
+		</p>
+
+
+
+
+
+
+		<h2>参考文献</h2>
+
+	</main>
+	
+</body>
+</html>
+
+<!-- EOF -->
