@@ -1,0 +1,5 @@
+# about execution files
+*.exe
+# about gfortran.exe
+*.mod
+*.o
