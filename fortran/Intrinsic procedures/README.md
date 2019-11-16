@@ -25,6 +25,8 @@
   - [test_ieee_value.f08](Example/test_ieee_value.f08)
 - function `tiny(x)`
   - [test_tiny.f08](Example/test_tiny.f08)
+- function `sum(array, dim[, mask])`
+  - [test_sum.f08](Example/test_sum.f08)
 - function `transfer(x)`
   - [test_transfer.f08](Example/test_transfer.f08)
 
