@@ -9,8 +9,8 @@
 @REM STEP.04
 @REM コンパイル
 
-@gfortran -c              -std=f2008 -pedantic-errors -Wall test_sum.f08
-@gfortran -o test_sum.exe -std=f2008 -pedantic-errors -Wall test_sum.o
+@gfortran -c              -std=f2008 -pedantic-errors -Wall test_sum_01.f08
+@gfortran -o test_sum.exe -std=f2008 -pedantic-errors -Wall test_sum_01.o
 
 @REM STEP.03
 @REM コンパイル終了時刻をコンソールに表示
