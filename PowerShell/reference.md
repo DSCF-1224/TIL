@@ -23,6 +23,13 @@
         * [`Get-Date`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/Get-Date?view=powershell-6)
         * [`Get-Random`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/Get-Random?view=powershell-6)
         * [`Get-Variable`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/Get-Variable?view=powershell-6)
+        * [`New-Object`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-object?view=powershell-6)
+          * `-COMObject`
+            * [`Excel.Application](Excel.Application/README.md)
+              * [ActiveWorkbook.md](Excel.Application/ActiveWorkbook.md)
+              * [ActiveSheet.md](Excel.Application/ActiveSheet.md)
+              * [ActiveWindow.md](Excel.Application/ActiveWindow.md)
+              * [Workbooks.md](Excel.Application/Workbooks.md)
         * [`Write-Error`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/Write-Error?view=powershell-6)
         * [`Write-Host`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/Write-Host?view=powershell-6)
         * [`Write-Output`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/Write-Output?view=powershell-6)
