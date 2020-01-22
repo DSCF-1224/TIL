@@ -1,6 +1,8 @@
 // =================================================================================================================================
 // * target
 //   * to handle CSV file
+// * tested compiler version
+//   * g++ (Rev1, Built by MSYS2 project) 7.2.0
 // =================================================================================================================================
 
 #include <fstream>
@@ -52,6 +54,18 @@ namespace CSV
 		private:
 			std::string   path_file;
 			std::ifstream obj;
+
+		public:
+			explicit ifstream (void)
+			{
+				/* nothing to do in this block scope */
+			}
+
+		public:
+			~ifstream (void)
+			{
+				/* nothing to do in this block scope */
+			}
 
 		public:
 			bool is_open (void) const noexcept
