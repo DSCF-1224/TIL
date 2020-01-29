@@ -10,22 +10,36 @@
 
 #include "txtfile_handler.hpp"
 
-inline std::string txtfile_handler::support::GenerateMemberFunctionName (void) const noexcept
+inline std::string txtfile_handler::support::GenerateMemberNameBase (const std::string & member_name) const
 {
-	return "txtfile_handler::support"s;
+	if   ( member_name.empty() )
+	{
+		return "txtfile_handler"s;
+	}
+	else
+	{
+		return GenerateMemberNameBase(nullptr) + "::"s + member_name;
+	}
 }
 
 
 
-inline std::string txtfile_handler::support::GenerateMemberFunctionName (const std::string & function_name) const noexcept
+inline std::string txtfile_handler::support::GenerateMemberName (void) const noexcept
 {
-	if   ( function_name.empty() )
+	return txtfile_handler::support::GenerateMemberNameBase("support"s);
+}
+
+
+
+inline std::string txtfile_handler::support::GenerateMemberName (const std::string & member_name) const noexcept
+{
+	if   ( member_name.empty() )
 	{
-		return this->GenerateMemberFunctionName();
+		return this->GenerateMemberName(nullptr);
 	}
 	else
 	{
-		return this->GenerateMemberFunctionName() + function_name;
+		return this->GenerateMemberName(nullptr) + "::"s + member_name;
 	}
 }
 
@@ -65,7 +79,7 @@ inline void txtfile_handler::support::ShowException (const std::exception & obj_
 
 inline void txtfile_handler::support::ShowException (const std::exception & obj_exception, const std::string & function_name, const bool allow_msgbox) const
 {
-	this->ShowException(obj_exception, function_name, this->GenerateMemberFunctionName(), allow_msgbox);
+	this->ShowException(obj_exception, function_name, this->GenerateMemberName(), allow_msgbox);
 }
 
 
@@ -81,7 +95,7 @@ inline void txtfile_handler::support::CheckFilePath (const std::string file_path
 	}
 	catch (const std::runtime_error & obj_exception)
 	{
-		this->ShowException(obj_exception, this->GenerateMemberFunctionName("CheckFilePath"s), allow_msgbox);
+		this->ShowException(obj_exception, this->GenerateMemberName("CheckFilePath"s), allow_msgbox);
 		std::exit(EXIT_FAILURE);
 	}
 }
@@ -112,7 +126,7 @@ inline std::string txtfile_handler::support::GetFileNameFromPath (const std::str
 	}
 	catch (const std::exception & obj_exception)
 	{
-		this->ShowException(obj_exception, this->GenerateMemberFunctionName("GetFileNameFromPath"s), allow_msgbox);
+		this->ShowException(obj_exception, this->GenerateMemberName("GetFileNameFromPath"s), allow_msgbox);
 	}
 
 	/* TRUE_END */
@@ -141,7 +155,7 @@ inline std::string txtfile_handler::support::GetFileExtension (const std::string
 	}
 	catch (const std::exception & obj_exception)
 	{
-		this->ShowException(obj_exception, this->GenerateMemberFunctionName("GetFileExtension"s), allow_msgbox);
+		this->ShowException(obj_exception, this->GenerateMemberName("GetFileExtension"s), allow_msgbox);
 	}
 
 	/* TRUE_END */

@@ -35,24 +35,35 @@ namespace txtfile_handler
 	{
 		/* Member Function */
 		private:
-			inline std::string GenerateMemberFunctionName  (void) const noexcept;
-			inline std::string GenerateMemberFunctionName  (const std::string & function_name) const noexcept;
+			inline std::string GenerateMemberName          (void) const noexcept;
+			inline std::string GenerateMemberName          (const std::string & member_name) const noexcept;
 			inline std::string GenerateMessageWithFilePath (const std::string & message, const std::string & file_path) const;
-			inline void        ShowException               (const std::exception & obj_exception, const std::string & function_name, const bool allow_msgbox) const;
-			inline std::string GetFileNameFromPath         (const std::string & file_path, const bool allow_msgbox) const;
 			inline std::string GetFileExtension            (const std::string & file_path, const bool allow_msgbox) const;
+			inline std::string GetFileNameFromPath         (const std::string & file_path, const bool allow_msgbox) const;
+			inline void        ShowException               (const std::exception & obj_exception, const std::string & function_name, const bool allow_msgbox) const;
 		public:
-			inline void ShowException (const std::exception & obj_exception, const std::string & function_name, const std::string & caption, const bool allow_msgbox) const;
-			inline void CheckFilePath (const std::string file_path, const bool allow_msgbox) const;
+			inline std::string GenerateMemberNameBase (const std::string & member_name) const;
+			inline void        CheckFilePath          (const std::string file_path, const bool allow_msgbox) const;
+			inline void        ShowException          (const std::exception & obj_exception, const std::string & function_name, const std::string & caption, const bool allow_msgbox) const;
 	};
 
-	class cstdio
+	class cstdio:
+		public support
 	{
 		/* Data Member */
 		private:
 			std::FILE   *file_pointer;
 			std::string  file_path;
 			std::string  file_name;
+
+		/* Member Function */
+		private:
+			inline std::string GenerateMemberName (void) const noexcept;
+			inline std::string GenerateMemberName (const std::string & function_name) const noexcept;
+			inline void        SetFileName        (void);
+			inline void        ShowException      (const std::exception & obj_exception, const std::string & function_name, const bool allow_msgbox) const;
+		public:
+			explicit cstdio (void);
 	};
 }
 // namespace TXT
