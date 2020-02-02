@@ -1,0 +1,384 @@
+\documentclass{ltjsarticle}
+
+\usepackage{graphicx}
+\usepackage[dvipdfmx,margin=12.7truemm,includefoot]{geometry}
+
+\usepackage{amsmath,amssymb}
+\usepackage{unicode-math}
+	\setmainfont{XITS}%
+	\setmonofont[Ligatures=TeX]{Inconsolatazi4}
+	\setmathfont{XITS Math} 
+
+\begin{document}
+
+	\tableofcontents%
+	\pagebreak%
+
+	\section{version information}
+
+		\noindent%
+		\verb|G N U P L O T|\\%
+		\verb|Version 5.0 patchlevel 6    last modified 2017-03-18|\\%
+		\verb|Version 5.2 patchlevel 6    last modified 2019-01-01|
+
+	\section{How to use}
+
+		\subsection{list of Greek characters (capital)}
+
+			\begin{table}[ht]
+				\centering%
+				\begin{tabular}{|ccccl|}\hline%
+					character                & \verb|gnuplot|  & Unicode       & UTF-8 (hex) & name\\ \hline%
+					\( \symup\mitAlpha \)    & \verb|\316\221| & \verb|U+0391| & \verb|CE91| & GREEK CAPITAL LETTER ALPHA\\%
+					\( \symup\mitBeta  \)    & \verb|\316\222| & \verb|U+0392| & \verb|CE92| & GREEK CAPITAL LETTER BETA\\%
+					\( \symup\mitGamma \)    & \verb|\316\223| & \verb|U+0393| & \verb|CE93| & GREEK CAPITAL LETTER GAMMA\\%
+					\( \symup\mitDelta \)    & \verb|\316\224| & \verb|U+0394| & \verb|CE94| & GREEK CAPITAL LETTER DELTA\\%
+					\( \symup\mitEpsilon \)  & \verb|\316\225| & \verb|U+0395| & \verb|CE95| & GREEK CAPITAL LETTER EPSILON\\%
+					\( \symup\mitZeta \)     & \verb|\316\226| & \verb|U+0396| & \verb|CE96| & GREEK CAPITAL LETTER ZETA\\%
+					\( \symup\mitEta \)      & \verb|\316\227| & \verb|U+0397| & \verb|CE97| & GREEK CAPITAL LETTER ETA\\%
+					\( \symup\mitTheta \)    & \verb|\316\230| & \verb|U+0398| & \verb|CE98| & GREEK CAPITAL LETTER THETA\\%
+					\( \symup\mitIota \)     & \verb|\316\231| & \verb|U+0399| & \verb|CE99| & GREEK CAPITAL LETTER IOTA\\%
+					\( \symup\mitKappa \)    & \verb|\316\232| & \verb|U+039A| & \verb|CE9A| & GREEK CAPITAL LETTER KAPPA\\%
+					\( \symup\mitLambda \)   & \verb|\316\233| & \verb|U+039B| & \verb|CE9B| & GREEK CAPITAL LETTER LAMDA\\%
+					\( \symup\mitMu \)       & \verb|\316\234| & \verb|U+039C| & \verb|CE9C| & GREEK CAPITAL LETTER MU\\%
+					\( \symup\mitNu \)       & \verb|\316\235| & \verb|U+039D| & \verb|CE9D| & GREEK CAPITAL LETTER NU\\%
+					\( \symup\mitXi \)       & \verb|\316\236| & \verb|U+039E| & \verb|CE9E| & GREEK CAPITAL LETTER XI\\%
+					\( \symup\mitOmicron \)  & \verb|\316\237| & \verb|U+039F| & \verb|CE9F| & GREEK CAPITAL LETTER OMICRON\\%
+					\( \symup\mitPi \)       & \verb|\316\240| & \verb|U+03A0| & \verb|CEA0| & GREEK CAPITAL LETTER PI\\%
+					\( \symup\mitRho \)      & \verb|\316\241| & \verb|U+03A1| & \verb|CEA1| & GREEK CAPITAL LETTER RHO\\%
+					---                      & ---             & \verb|U+03A2| & \verb|CEA2| & ---\\%
+					\( \symup\mitSigma \)    & \verb|\316\243| & \verb|U+03A3| & \verb|CEA3| & GREEK CAPITAL LETTER SIGMA\\%
+					\( \symup\mitTau \)      & \verb|\316\244| & \verb|U+03A4| & \verb|CEA4| & GREEK CAPITAL LETTER TAU\\%
+					\( \symup\mitUpsilon \)  & \verb|\316\245| & \verb|U+03A5| & \verb|CEA5| & GREEK CAPITAL LETTER UPSILON\\%
+					\( \symup\mitPhi \)      & \verb|\316\246| & \verb|U+03A6| & \verb|CEA6| & GREEK CAPITAL LETTER PHI\\%
+					\( \symup\mitChi \)      & \verb|\316\247| & \verb|U+03A7| & \verb|CEA7| & GREEK CAPITAL LETTER CHI\\%
+					\( \symup\mitPsi \)      & \verb|\316\250| & \verb|U+03A8| & \verb|CEA8| & GREEK CAPITAL LETTER PSI\\%
+					\( \symup\mitOmega \)    & \verb|\316\251| & \verb|U+03A9| & \verb|CEA9| & GREEK CAPITAL LETTER OMEGA\\%
+					\( \symup\mitvarTheta \) & \verb|\317\264| & \verb|U+03F4| & \verb|CFB4| & GREEK CAPITAL THETA SYMBOL\\\hline%
+				\end{tabular}
+			\end{table}
+			\clearpage%
+
+		\subsection{list of Greek characters (small)}
+	
+			\begin{table}[ht]
+				\centering%
+				\begin{tabular}{|ccccl|}\hline%
+					character                & \verb|gnuplot|  & Unicode       & UTF-8 (hex) & name\\ \hline%
+					\( \symup\mitalpha \)    & \verb|\316\261| & \verb|U+03B1| & \verb|CEB1| & GREEK SMALL LETTER ALPHA\\%
+					\( \symup\mitbeta  \)    & \verb|\316\262| & \verb|U+03B2| & \verb|CEB2| & GREEK SMALL LETTER BETA\\%
+					\( \symup\mitgamma \)    & \verb|\316\263| & \verb|U+03B3| & \verb|CEB3| & GREEK SMALL LETTER GAMMA\\%
+					\( \symup\mitdelta \)    & \verb|\316\264| & \verb|U+03B4| & \verb|CEB4| & GREEK SMALL LETTER DELTA\\%
+					\( \symup\mitepsilon \)  & \verb|\316\265| & \verb|U+03B5| & \verb|CEB5| & GREEK SMALL LETTER EPSILON\\%
+					\( \symup\mitzeta \)     & \verb|\316\266| & \verb|U+03B6| & \verb|CEB6| & GREEK SMALL LETTER ZETA\\%
+					\( \symup\miteta \)      & \verb|\316\267| & \verb|U+03B7| & \verb|CEB7| & GREEK SMALL LETTER ETA\\%
+					\( \symup\mittheta \)    & \verb|\316\270| & \verb|U+03B8| & \verb|CEB8| & GREEK SMALL LETTER THETA\\%
+					\( \symup\mitiota \)     & \verb|\316\271| & \verb|U+03B9| & \verb|CEB9| & GREEK SMALL LETTER IOTA\\%
+					\( \symup\mitkappa \)    & \verb|\316\272| & \verb|U+03BA| & \verb|CEBA| & GREEK SMALL LETTER KAPPA\\%
+					\( \symup\mitlambda \)   & \verb|\316\273| & \verb|U+03BB| & \verb|CEBB| & GREEK SMALL LETTER LAMDA\\%
+					\( \symup\mitmu \)       & \verb|\316\274| & \verb|U+03BC| & \verb|CEBC| & GREEK SMALL LETTER MU\\%
+					\( \symup\mitnu \)       & \verb|\316\275| & \verb|U+03BD| & \verb|CEBD| & GREEK SMALL LETTER NU\\%
+					\( \symup\mitxi \)       & \verb|\316\276| & \verb|U+03BE| & \verb|CEBE| & GREEK SMALL LETTER XI\\%
+					\( \symup\mitomicron \)  & \verb|\316\277| & \verb|U+03BF| & \verb|CEBF| & GREEK SMALL LETTER OMICRON\\%
+					\( \symup\mitpi \)       & \verb|\317\200| & \verb|U+03C0| & \verb|CF80| & GREEK SMALL LETTER PI\\%
+					\( \symup\mitrho \)      & \verb|\317\201| & \verb|U+03C1| & \verb|CF81| & GREEK SMALL LETTER RHO\\%
+					\( \symup\mitrho \)      & \verb|\317\201| & \verb|U+03C2| & \verb|CF81| & GREEK SMALL LETTER FINAL SIGMA\\%
+					\( \symup\mitsigma \)    & \verb|\317\203| & \verb|U+03C3| & \verb|CF83| & GREEK SMALL LETTER SIGMA\\%
+					\( \symup\mittau \)      & \verb|\317\204| & \verb|U+03C4| & \verb|CF84| & GREEK SMALL LETTER TAU\\%
+					\( \symup\mitupsilon \)  & \verb|\317\205| & \verb|U+03C5| & \verb|CF85| & GREEK SMALL LETTER UPSILON\\%
+					\( \symup\mitphi \)      & \verb|\317\206| & \verb|U+03C6| & \verb|CF86| & GREEK SMALL LETTER PHI\\%
+					\( \symup\mitchi \)      & \verb|\317\207| & \verb|U+03C7| & \verb|CF87| & GREEK SMALL LETTER CHI\\%
+					\( \symup\mitpsi \)      & \verb|\317\210| & \verb|U+03C8| & \verb|CF88| & GREEK SMALL LETTER PSI\\%
+					\( \symup\mitomega \)    & \verb|\317\211| & \verb|U+03C9| & \verb|CF89| & GREEK SMALL LETTER OMEGA\\%
+					\( \symup\mupvartheta \) & \verb|\317\221| & \verb|U+03D1| & \verb|CF91| & GREEK THETA SYMBOL\\%
+					\( \symup\mitvarpi \)    & \verb|\317\226| & \verb|U+03D6| & \verb|CF96| & GREEK PI SYMBOL\\\hline%
+				\end{tabular}
+			\end{table}
+			\clearpage%
+
+		\subsection{emf}
+
+			\noindent%
+			\verb|set terminal emf font "Arial"|\\%
+			\verb|set terminal emf font "Times"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/: \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Normal \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Italic \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Bold \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Bold:Normal \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Bold:Italic \316\221}"|\\%
+
+			\noindent%
+			\verb|{"<label text>"}| for Greek letters must be enclosed by \emph{double quotation marks}.
+
+		\subsection{epscairo}
+
+			\noindent%
+			\verb|set terminal epscairo font "Arial"|\\%
+			\verb|set terminal epscairo font "Times-New-Roman"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/: \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Normal \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Italic \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Bold \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Bold:Normal \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Bold:Italic \316\221}"|%
+
+		\subsection{pdfcairo}
+
+			\noindent%
+			\verb|set terminal pdfcairo font "Arial"|\\%
+			\verb|set terminal pdfcairo font "Times-New-Roman"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/: \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Normal \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Italic \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Bold \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Bold:Normal \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Bold:Italic \316\221}"|%
+
+		\subsection{pngcairo}
+
+			\noindent%
+			\verb|set terminal pngcairo font "Arial"|\\%
+			\verb|set terminal pngcairo font "Times-New-Roman"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/: \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Normal \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Italic \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Bold \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Bold:Normal \316\221}"|\\%
+			\verb|set label 1 left at graph 0.0,0.0 "{/:Bold:Italic \316\221}"|%
+
+		\clearpage%
+
+	\section{set terminal emf}
+
+		\subsection{font "Arial"}
+
+			\begin{figure}[ht]
+				\centering
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth,page=1]{test_Greek/greek_emf.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth,page=2]{test_Greek/greek_emf.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth,page=3]{test_Greek/greek_emf.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth,page=4]{test_Greek/greek_emf.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth,page=5]{test_Greek/greek_emf.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth,page=6]{test_Greek/greek_emf.pdf}
+				\end{minipage}
+			\end{figure}
+			\clearpage%
+
+		\subsection{font "Times-New-Roman"}
+
+			\begin{figure}[ht]
+				\centering
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth,page=7]{test_Greek/greek_emf.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth,page=8]{test_Greek/greek_emf.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth,page=9]{test_Greek/greek_emf.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth,page=10]{test_Greek/greek_emf.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth,page=11]{test_Greek/greek_emf.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth,page=12]{test_Greek/greek_emf.pdf}
+				\end{minipage}
+			\end{figure}
+			\clearpage%
+
+	\section{set terminal epscairo}
+
+		\subsection{font "Arial"}
+
+			\begin{figure}[ht]
+				\centering
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Arial_.eps}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Arial_Normal.eps}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Arial_Italic.eps}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Arial_Bold.eps}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Arial_Bold_Normal.eps}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Arial_Bold_Italic.eps}
+				\end{minipage}
+			\end{figure}
+			\clearpage%
+
+			\subsection{font "Courier"}
+	
+				\begin{figure}[ht]
+					\centering
+					\begin{minipage}{0.3\columnwidth}
+						\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Courier_.eps}
+					\end{minipage}
+					\begin{minipage}{0.3\columnwidth}
+						\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Courier_Normal.eps}
+					\end{minipage}
+					\begin{minipage}{0.3\columnwidth}
+						\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Courier_Italic.eps}
+					\end{minipage}
+					\begin{minipage}{0.3\columnwidth}
+						\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Courier_Bold.eps}
+					\end{minipage}
+					\begin{minipage}{0.3\columnwidth}
+						\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Courier_Bold_Normal.eps}
+					\end{minipage}
+					\begin{minipage}{0.3\columnwidth}
+						\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Courier_Bold_Italic.eps}
+					\end{minipage}
+				\end{figure}
+				\clearpage%
+
+		\subsection{font "Times-New-Roman"}
+
+			\begin{figure}[ht]
+				\centering
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Times_.eps}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Times_Normal.eps}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Times_Italic.eps}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Times_Bold.eps}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Times_Bold_Normal.eps}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_epscairo_Times_Bold_Italic.eps}
+				\end{minipage}
+			\end{figure}
+			\clearpage%
+	\section{set terminal pdfcairo}
+
+		\subsection{font "Arial"}
+
+			\begin{figure}[ht]
+				\centering
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pdfcairo_Arial_.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pdfcairo_Arial_Normal.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pdfcairo_Arial_Italic.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pdfcairo_Arial_Bold.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pdfcairo_Arial_Bold_Normal.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pdfcairo_Arial_Bold_Italic.pdf}
+				\end{minipage}
+			\end{figure}
+			\clearpage%
+		
+		\subsection{font "Times-New-Roman"}
+
+			\begin{figure}[ht]
+				\centering
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pdfcairo_Times_.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pdfcairo_Times_Normal.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pdfcairo_Times_Italic.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pdfcairo_Times_Bold.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pdfcairo_Times_Bold_Normal.pdf}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pdfcairo_Times_Bold_Italic.pdf}
+				\end{minipage}
+			\end{figure}
+			\clearpage%
+
+	\section{set terminal pngcairo}
+
+		\subsection{font "Arial"}
+
+			\begin{figure}[ht]
+				\centering
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pngcairo_Arial_.png}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pngcairo_Arial_Normal.png}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pngcairo_Arial_Italic.png}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pngcairo_Arial_Bold.png}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pngcairo_Arial_Bold_Normal.png}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pngcairo_Arial_Bold_Italic.png}
+				\end{minipage}
+			\end{figure}
+			\clearpage%
+		
+		\subsection{font "Times-New-Roman"}
+
+			\begin{figure}[ht]
+				\centering
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pngcairo_Times_.png}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pngcairo_Times_Normal.png}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pngcairo_Times_Italic.png}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pngcairo_Times_Bold.png}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pngcairo_Times_Bold_Normal.png}
+				\end{minipage}
+				\begin{minipage}{0.3\columnwidth}
+					\includegraphics[keepaspectratio,width=0.825\columnwidth]{test_Greek/greek_pngcairo_Times_Bold_Italic.png}
+				\end{minipage}
+			\end{figure}
+			\clearpage%
+
+\end{document}
