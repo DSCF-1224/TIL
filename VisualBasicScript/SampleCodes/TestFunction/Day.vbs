@@ -1,3 +1,14 @@
+Rem #===========================================================================
+Rem # * warhing
+Rem #   * This Visual Basic Script was written in UTF-8
+Rem # * target
+Rem #   * check what returned from the following function
+Rem #     * ScriptEngine()
+Rem #     * ScriptEngineMajorVersion()
+Rem #     * ScriptEngineMinorVersion()
+Rem #     * ScriptEngineBuildVersion()
+Rem #===========================================================================
+
 Rem # Require all variables to be explicitly declared
 Option Explicit
 
@@ -12,4 +23,5 @@ Rem # Test function `Date`
 WScript.Echo Date()             Rem # returns : 2019/08/07
 WScript.Echo TypeName( Date() ) Rem # returns : Date
 
+Rem #===========================================================================
 Rem # EOF
