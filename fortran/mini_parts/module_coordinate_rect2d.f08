@@ -3,6 +3,7 @@
 !   * to define a class to handle rectangular coordinate (2D)
 ! * reference
 !   * https://qiita.com/cure_honey/items/99abb9f922089a974d4d
+!   * https://amanotk.github.io/fortran-resume-public/chap09_sample5_f90.html
 ! ==================================================================================================================================
 
 module module_coordinate_rect2d
@@ -52,6 +53,16 @@ module module_coordinate_rect2d
     private :: abs64  ! function
     private :: abs128 ! function
 
+    public  :: assign_value    ! interface of subroutine
+    private :: assign_value32  ! subroutine
+    private :: assign_value64  ! subroutine
+    private :: assign_value128 ! subroutine
+
+    public  :: assign_zero    ! interface of subroutine
+    private :: assign_zero32  ! subroutine
+    private :: assign_zero64  ! subroutine
+    private :: assign_zero128 ! subroutine
+
 
 
     ! <type>s for this <module>
@@ -73,6 +84,9 @@ module module_coordinate_rect2d
 
 
     ! <interface>s for this <module>
+    interface assignment (=)
+    end interface assignment (=)
+
     interface operator (-)
         module procedure :: minus32
         module procedure :: minus64
@@ -111,6 +125,18 @@ module module_coordinate_rect2d
         module procedure :: abs64
         module procedure :: abs128
     end interface abs
+
+    interface  assign_value
+        module procedure ::    assign_value32
+        module procedure ::    assign_value64
+        module procedure ::    assign_value128
+    end interface  assign_value
+
+    interface  assign_zero
+        module procedure ::    assign_zero32
+        module procedure ::    assign_zero64
+        module procedure ::    assign_zero128
+    end interface  assign_zero
 
 
     ! contained <subroutine>s and <function>s are below
@@ -387,6 +413,70 @@ module module_coordinate_rect2d
         abs = sqrt( abs2(arg) )
 
     end function abs128
+
+
+
+    pure subroutine assign_value32 (instance, val)
+
+        ! arguments for this <subroutine>
+        type(rect2d32), intent(out) :: instance
+        real(REAL32),   intent(in)  :: val
+
+        instance%x = val
+        instance%y = val
+
+    end subroutine assign_value32
+
+    pure subroutine assign_value64 (instance, val)
+
+        ! arguments for this <subroutine>
+        type(rect2d64), intent(out) :: instance
+        real(REAL64),   intent(in)  :: val
+
+        instance%x = val
+        instance%y = val
+
+    end subroutine assign_value64
+
+    pure subroutine assign_value128 (instance, val)
+
+        ! arguments for this <subroutine>
+        type(rect2d128), intent(out) :: instance
+        real(REAL128),   intent(in)  :: val
+
+        instance%x = val
+        instance%y = val
+
+    end subroutine assign_value128
+
+
+
+    pure subroutine assign_zero32 (arg)
+
+        ! arguments for this <subroutine>
+        type(rect2d32), intent(out) :: arg
+
+        call   assign_value(instance=arg, val= 0.0_REAL32)
+
+    end subroutine assign_zero32
+
+    pure subroutine assign_zero64 (arg)
+
+        ! arguments for this <subroutine>
+        type(rect2d64), intent(out) :: arg
+
+        call   assign_value(instance=arg, val= 0.0_REAL64)
+
+    end subroutine assign_zero64
+
+    pure subroutine assign_zero128 (arg)
+
+        ! arguments for this <subroutine>
+        type(rect2d128), intent(out) :: arg
+
+        call   assign_value(instance=arg, val= 0.0_REAL128)
+
+    end subroutine assign_zero128
 
 end module module_coordinate_rect2d
 
