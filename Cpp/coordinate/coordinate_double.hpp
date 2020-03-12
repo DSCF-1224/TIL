@@ -16,25 +16,52 @@ namespace coordinate
 		{
 			/* data */
 			public:
-				double first;
-				double second;
+				double * ptr_first;
+				double * ptr_second;
 
 			/* constructor */
-			explicit D2 (double const & first, double const & second);
-			explicit D2 (double const & arg);
-		};
-
-		class D3
-		{
-			/* data */
 			public:
-				double first;
-				double second;
-				double third;
+				explicit D2 (const double first = 0.0, const double second = 0.0);
+			public:
+				D2(const D2 &  source); // copy
+				D2(      D2 && source); // move
 
-			/* constructor */
-			explicit D3 (double const & first, double const & second, double const & third);
-			explicit D3 (double const & arg);
+			/* destructor */
+			private:
+				~D2 (void);
+
+			/* operator */
+			public:
+				D2 & operator = (const D2 &  rhs); // copy
+				D2   operator = (      D2 && rhs); // move
+
+
+
+			/* implementation */
+			D2 & operator = (const D2 & rhs) // copy
+			{
+				if (this != &rhs)
+				{
+					*ptr_first  = *rhs.ptr_first;
+					*ptr_second = *rhs.ptr_second;
+				}
+
+				return *this;
+			}
+
+			D2 operator = (D2 && rhs) // move
+			{
+				delete this->ptr_first;
+				delete this->ptr_second;
+
+				this->ptr_first  = rhs.ptr_first;
+				this->ptr_second = rhs.ptr_second;
+
+				rhs.ptr_first  = nullptr;
+				rhs.ptr_second = nullptr;
+
+				return *this;
+			}
 		};
 	} // namespace rectangle
 	
@@ -42,38 +69,43 @@ namespace coordinate
 
 
 
-explicit coordinate::rectangle::D2::D2 (double const & first, double const & second)
+/* constructor */
+explicit coordinate::rectangle::D2::D2 (const double arg_first = 0.0, const double arg_second = 0.0):
+	ptr_first  ( new double( arg_first  ) ),
+	ptr_second ( new double( arg_second ) )
 {
-	this->first  = first;
-	this->second = second;
+	/* nothing to do in this block scope */
 }
 
 
 
-explicit coordinate::rectangle::D2::D2 (double const & arg)
+/* copy constructor */
+coordinate::rectangle::D2::D2 (const coordinate::rectangle::D2 & source):
+	ptr_first  ( new double( *source.ptr_first  ) ),
+	ptr_second ( new double( *source.ptr_second ) )
 {
-	this->first  = arg;
-	this->second = arg;
+	/* nothing to do in this block scope */
 }
 
 
 
-explicit coordinate::rectangle::D3::D3 (double const & first, double const & second, double const & third)
+/* move constructor */
+coordinate::rectangle::D2::D2 (coordinate::rectangle::D2 && source):
+	ptr_first  ( source.ptr_first  ),
+	ptr_second ( source.ptr_second )
 {
-	this->first  = first;
-	this->second = second;
-	this->third  = third;
+	source.ptr_first  = nullptr;
+	source.ptr_second = nullptr;
 }
 
 
 
-explicit coordinate::rectangle::D3::D3 (double const & arg)
+/* destructor */
+coordinate::rectangle::D2::~D2 (void)
 {
-	this->first  = arg;
-	this->second = arg;
-	this->third  = arg;
+	delete ptr_first;
+	delete ptr_second;
 }
-
 
 #endif　/* COORDINATE_HPP_20200310_064126_INCLUDED */
 
