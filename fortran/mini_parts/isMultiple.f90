@@ -259,7 +259,7 @@ module mod_isMultiple
     pure function isOdd_mod_64 (i) result(stat)
 
         ! arguments for this <function>
-        integer(INT16), intent(in) :: i
+        integer(INT64), intent(in) :: i
 
         ! return value of this <function>
         logical :: stat
