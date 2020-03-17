@@ -41,6 +41,8 @@
   - [test_not.f08](Example/test_not.f08)
 - function `sum(array, dim[, mask])`
   - [test_sum.f08](Example/test_sum.f08)
+- function `trailz(i)`
+  - [test_trailz.f08](Example/test_trailz.f08)
 - function `transfer(x)`
   - [test_transfer.f08](Example/test_transfer.f08)
   - [test_transfer_pow2.f08](Example/test_transfer_pow2.f08)

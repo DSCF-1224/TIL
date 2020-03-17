@@ -1,9 +1,10 @@
 ! ==================================================================================================================================
 ! [used compiler]
 ! gcc version 9.2.0 (Rev2, Built by MSYS2 project)
+! [reference]
+! http://fortranwiki.org/fortran/show/leadz
+! https://www.exploringbinary.com/ten-ways-to-check-if-an-integer-is-a-power-of-two-in-c/
 ! ==================================================================================================================================
-
-!gfortran, gcc version 5.4.0 20320609
 
 program test_leadz
 
