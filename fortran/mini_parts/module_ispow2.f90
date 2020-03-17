@@ -12,6 +12,10 @@ module mod_ispow2
     use, non_intrinsic :: mod_isMultiple
 
 
+    ! require all variables to be explicitly declared
+    implicit none
+
+
     ! constants for this <module>
     integer(INT8), parameter, private :: set_pow2_positive_08(1:7) &!
         = (/                                                       &!
@@ -187,6 +191,30 @@ module mod_ispow2
     private :: isPow2_LogSearch_32 ! (pure) function
     private :: isPow2_LogSearch_64 ! (pure) function
 
+    public  :: isPow2_CountBit    ! interface
+    private :: isPow2_CountBit_08 ! (pure) function
+    private :: isPow2_CountBit_16 ! (pure) function
+    private :: isPow2_CountBit_32 ! (pure) function
+    private :: isPow2_CountBit_64 ! (pure) function
+
+    public  :: isPow2_ShiftRight    ! interface
+    private :: isPow2_ShiftRight_08 ! (pure) function
+    private :: isPow2_ShiftRight_16 ! (pure) function
+    private :: isPow2_ShiftRight_32 ! (pure) function
+    private :: isPow2_ShiftRight_64 ! (pure) function
+
+    public  :: isPow2_Decrement    ! interface
+    private :: isPow2_Decrement_08 ! (pure) function
+    private :: isPow2_Decrement_16 ! (pure) function
+    private :: isPow2_Decrement_32 ! (pure) function
+    private :: isPow2_Decrement_64 ! (pure) function
+
+    public  :: isPow2_Complement    ! interface
+    private :: isPow2_Complement_08 ! (pure) function
+    private :: isPow2_Complement_16 ! (pure) function
+    private :: isPow2_Complement_32 ! (pure) function
+    private :: isPow2_Complement_64 ! (pure) function
+
     private :: twice    ! interface
     private :: twice_08 ! (pure) function
     private :: twice_16 ! (pure) function
@@ -242,6 +270,34 @@ module mod_ispow2
         module procedure :: isPow2_LogSearch_32
         module procedure :: isPow2_LogSearch_64
     end interface isPow2_LogSearch
+
+    interface isPow2_CountBit
+        module procedure :: isPow2_CountBit_08
+        module procedure :: isPow2_CountBit_16
+        module procedure :: isPow2_CountBit_32
+        module procedure :: isPow2_CountBit_64
+    end interface isPow2_CountBit
+
+    interface isPow2_ShiftRight
+        module procedure :: isPow2_ShiftRight_08
+        module procedure :: isPow2_ShiftRight_16
+        module procedure :: isPow2_ShiftRight_32
+        module procedure :: isPow2_ShiftRight_64
+    end interface isPow2_ShiftRight
+
+    interface isPow2_Decrement
+        module procedure :: isPow2_Decrement_08
+        module procedure :: isPow2_Decrement_16
+        module procedure :: isPow2_Decrement_32
+        module procedure :: isPow2_Decrement_64
+    end interface isPow2_Decrement
+
+    interface isPow2_Complement
+        module procedure :: isPow2_Complement_08
+        module procedure :: isPow2_Complement_16
+        module procedure :: isPow2_Complement_32
+        module procedure :: isPow2_Complement_64
+    end interface isPow2_Complement
 
     interface twice
         module procedure :: twice_08
@@ -1315,6 +1371,440 @@ module mod_ispow2
         return
 
     end function isPow2_LogSearch_64
+
+
+    ! pattern 07
+    ! Count Ones
+    pure function isPow2_CountBit_08 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT8), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! variables for this <function>
+        integer(INT8) :: i_copied
+        integer       :: number_bits
+
+
+        ! STEP.01
+        ! check the special values
+        if ( i .le. 0 ) then
+            stat = .false.
+            return
+        end if
+
+        ! STEP.02
+        ! initialize the value
+        number_bits = 0
+        i_copied    = i
+
+        ! STEP.03
+        ! test the argument
+        do while (i_copied .gt. 0 .and. number_bits .ge. 1)
+
+            if ( iand(i_copied, 1_INT8) .eq. 1_INT8 ) number_bits = number_bits + 1
+            i_copied = shiftr(i= i_copied, shift=1)
+
+        end do
+
+        stat = (number_bits .eq. 1)
+
+        return
+
+    end function isPow2_CountBit_08
+
+
+    pure function isPow2_CountBit_16 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT16), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! variables for this <function>
+        integer(INT16) :: i_copied
+        integer       :: number_bits
+
+
+        ! STEP.01
+        ! check the special values
+        if ( i .le. 0 ) then
+            stat = .false.
+            return
+        end if
+
+        ! STEP.02
+        ! initialize the value
+        number_bits = 0
+        i_copied    = i
+
+        ! STEP.03
+        ! test the argument
+        do while (i_copied .gt. 0 .and. number_bits .ge. 1)
+
+            if ( iand(i_copied, 1_INT16) .eq. 1_INT16 ) number_bits = number_bits + 1
+            i_copied = shiftr(i= i_copied, shift=1)
+
+        end do
+
+        stat = (number_bits .eq. 1)
+
+        return
+
+    end function isPow2_CountBit_16
+
+
+    pure function isPow2_CountBit_32 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT32), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! variables for this <function>
+        integer(INT32) :: i_copied
+        integer       :: number_bits
+
+
+        ! STEP.01
+        ! check the special values
+        if ( i .le. 0 ) then
+            stat = .false.
+            return
+        end if
+
+        ! STEP.02
+        ! initialize the value
+        number_bits = 0
+        i_copied    = i
+
+        ! STEP.03
+        ! test the argument
+        do while (i_copied .gt. 0 .and. number_bits .ge. 1)
+
+            if ( iand(i_copied, 1_INT32) .eq. 1_INT32 ) number_bits = number_bits + 1
+            i_copied = shiftr(i= i_copied, shift=1)
+
+        end do
+
+        stat = (number_bits .eq. 1)
+
+        return
+
+    end function isPow2_CountBit_32
+
+
+    pure function isPow2_CountBit_64 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT64), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! variables for this <function>
+        integer(INT64) :: i_copied
+        integer       :: number_bits
+
+
+        ! STEP.01
+        ! check the special values
+        if ( i .le. 0 ) then
+            stat = .false.
+            return
+        end if
+
+        ! STEP.02
+        ! initialize the value
+        number_bits = 0
+        i_copied    = i
+
+        ! STEP.03
+        ! test the argument
+        do while (i_copied .gt. 0 .and. number_bits .ge. 1)
+
+            if ( iand(i_copied, 1_INT64) .eq. 1_INT64 ) number_bits = number_bits + 1
+            i_copied = shiftr(i= i_copied, shift=1)
+
+        end do
+
+        stat = (number_bits .eq. 1)
+
+        return
+
+    end function isPow2_CountBit_64
+
+
+    ! pattern 08
+    ! Shift Right
+    pure function isPow2_ShiftRight_08 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT8), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! variables for this <function>
+        integer(INT8) :: i_copied
+
+        ! STEP.01
+        ! copy the argument
+        i_copied = i
+
+        ! STEP.02
+        ! test the argument
+        do while ( iand(i_copied, 1_INT8) .eq. 0 .and. i_copied .gt. 1_INT8 )
+            i_copied = shiftr(i= i_copied, shift= 1)
+        end do
+
+        stat = i_copied .eq. 1
+
+        ! STEP.END
+        return
+
+    end function isPow2_ShiftRight_08
+
+
+    pure function isPow2_ShiftRight_16 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT16), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! variables for this <function>
+        integer(INT16) :: i_copied
+
+        ! STEP.01
+        ! copy the argument
+        i_copied = i
+
+        ! STEP.02
+        ! test the argument
+        do while ( iand(i_copied, 1_INT16) .eq. 0 .and. i_copied .gt. 1_INT16 )
+            i_copied = shiftr(i= i_copied, shift= 1)
+        end do
+
+        stat = i_copied .eq. 1
+
+        ! STEP.END
+        return
+
+    end function isPow2_ShiftRight_16
+
+
+    pure function isPow2_ShiftRight_32 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT32), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! variables for this <function>
+        integer(INT32) :: i_copied
+
+        ! STEP.01
+        ! copy the argument
+        i_copied = i
+
+        ! STEP.02
+        ! test the argument
+        do while ( iand(i_copied, 1_INT32) .eq. 0 .and. i_copied .gt. 1_INT32 )
+            i_copied = shiftr(i= i_copied, shift= 1)
+        end do
+
+        stat = i_copied .eq. 1
+
+        ! STEP.END
+        return
+
+    end function isPow2_ShiftRight_32
+
+
+    pure function isPow2_ShiftRight_64 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT64), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! variables for this <function>
+        integer(INT64) :: i_copied
+
+        ! STEP.01
+        ! copy the argument
+        i_copied = i
+
+        ! STEP.02
+        ! test the argument
+        do while ( iand(i_copied, 1_INT64) .eq. 0 .and. i_copied .gt. 1_INT64 )
+            i_copied = shiftr(i= i_copied, shift= 1)
+        end do
+
+        stat = i_copied .eq. 1
+
+        ! STEP.END
+        return
+
+    end function isPow2_ShiftRight_64
+
+
+    ! pattern 09
+    ! Decrement and Compare
+    pure function isPow2_Decrement_08 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT8), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! STEP.01
+        ! test the argument
+        stat = (i .ne. 0_INT8) .and. ( .not. ( iand(i, i - 1_INT8) .eq. 0_INT8 ) )
+
+        ! STEP.END
+        return
+
+    end function isPow2_Decrement_08
+
+
+    pure function isPow2_Decrement_16 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT16), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! STEP.01
+        ! test the argument
+        stat = (i .ne. 0_INT16) .and. ( .not. ( iand(i, i - 1_INT16) .eq. 0_INT16 ) )
+
+        ! STEP.END
+        return
+
+    end function isPow2_Decrement_16
+
+
+    pure function isPow2_Decrement_32 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT32), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! STEP.01
+        ! test the argument
+        stat = (i .ne. 0_INT32) .and. ( .not. ( iand(i, i - 1_INT32) .eq. 0_INT32 ) )
+
+        ! STEP.END
+        return
+
+    end function isPow2_Decrement_32
+
+
+    pure function isPow2_Decrement_64 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT64), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! STEP.01
+        ! test the argument
+        stat = (i .ne. 0_INT64) .and. ( .not. ( iand(i, i - 1_INT64) .eq. 0_INT64 ) )
+
+        ! STEP.END
+        return
+
+    end function isPow2_Decrement_64
+
+
+    ! pattern 10
+    ! Complement and Compare
+    pure function isPow2_Complement_08 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT8), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! STEP.01
+        ! test the argument
+        stat = (i .ne. 0_INT8) .and. ( iand(i, not(i) + 1_INT8) .eq. i )
+
+        ! STEP.END
+        return
+
+    end function isPow2_Complement_08
+
+
+    pure function isPow2_Complement_16 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT16), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! STEP.01
+        ! test the argument
+        stat = (i .ne. 0_INT16) .and. ( iand(i, not(i) + 1_INT16) .eq. i )
+
+        ! STEP.END
+        return
+
+    end function isPow2_Complement_16
+
+
+    pure function isPow2_Complement_32 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT32), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! STEP.01
+        ! test the argument
+        stat = (i .ne. 0_INT32) .and. ( iand(i, not(i) + 1_INT32) .eq. i )
+
+        ! STEP.END
+        return
+
+    end function isPow2_Complement_32
+
+
+    pure function isPow2_Complement_64 (i) result(stat)
+
+        ! arguments for this <function>
+        integer(INT64), intent(in) :: i
+
+        ! return value of this <function>
+        logical :: stat
+
+        ! STEP.01
+        ! test the argument
+        stat = (i .ne. 0_INT64) .and. ( iand(i, not(i) + 1_INT64) .eq. i )
+
+        ! STEP.END
+        return
+
+    end function isPow2_Complement_64
+
+end module mod_ispow2
 
 ! ==================================================================================================================================
 ! EOF

@@ -21,12 +21,14 @@
   - [test_huge.f08](Example/test_huge.f08)
 - function `ichar(c [, kind])`
   - [test_ichar.f08](Example/test_ichar.f08)
+- function `ieee_value(x, class)`
+  - [test_ieee_value.f08](Example/test_ieee_value.f08)
 - function `ishft(i, shift)`
   - [test_shift.f08](Example/test_shift.f08)
 - function `ishftc(i, shift [, size])`
   - [test_shift.f08](Example/test_shift.f08)
-- function `ieee_value(x, class)`
-  - [test_ieee_value.f08](Example/test_ieee_value.f08)
+- function `leadz(i)`
+  - [test_leadz.f08](Example/test_leadz.f08)
 - function `shifta(i, shift)`
   - [test_shift.f08](Example/test_shift.f08)
 - function `shiftl(i, shift)`
