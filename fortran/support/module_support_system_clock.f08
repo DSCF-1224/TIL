@@ -18,24 +18,24 @@ module module_support_system_clock
 
 
     ! accessibility of the <subroutine>s and <function>s in this <module>
-    public  :: typeSysClock       ! type
-    private :: getDataSystemClock ! subroutine
-    public  :: calcElapsedTime    ! function
+    public  :: type_system_clock            ! type
+    private :: call_system_clock_for_type   ! subroutine
+    public  :: elapsed_system_clock         ! function
 
 
 
     ! <type>s for this <module>
-    type typeSysClock
+    type type_system_clock
         integer(INT64), private :: count
         integer(INT64), private :: count_rate
         integer(INT64), private :: count_max
-    end type typeSysClock
+    end type type_system_clock
 
 
 
     ! <interface>s for this <module>
     interface system_clock
-        module procedure :: getDataSystemClock
+        module procedure :: call_system_clock_for_type
     end interface system_clock
 
 
@@ -45,10 +45,10 @@ module module_support_system_clock
 
 
 
-    subroutine getDataSystemClock ( instance )
+    subroutine call_system_clock_for_type ( instance )
 
         ! arguments for this <subroutine>
-        type(typeSysClock), intent(inout) :: instance
+        type(type_system_clock), intent(inout) :: instance
 
         ! STEP.01/01
         ! call intrinsic subroutine <SYSTEM_CLOCK>
@@ -61,14 +61,14 @@ module module_support_system_clock
         ! STEP.END
         return
 
-    end subroutine getDataSystemClock
+    end subroutine call_system_clock_for_type
 
 
 
-    pure function calcElapsedTime ( instance_bgn, instance_end ) result( valElapsedTime )
+    pure function elapsed_system_clock ( instance_bgn, instance_end ) result( valElapsedTime )
 
         ! arguments for this <function> 
-        type(typeSysClock), intent(in) :: instance_bgn, instance_end
+        type(type_system_clock), intent(in) :: instance_bgn, instance_end
 
         ! return value of this <function>
         real(REAL64) :: valElapsedTime
@@ -88,7 +88,7 @@ module module_support_system_clock
         ! STEP.END
         return
 
-    end function calcElapsedTime
+    end function elapsed_system_clock
 
 end module module_support_system_clock
 
