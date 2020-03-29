@@ -6,7 +6,10 @@
 
 \RequirePackage{xcolor}
 
+
+
 % --- accent colors --- %
+
 \definecolor{CUDRed}{cmyk}{0.00,0.75,0.90,0.00}
 \definecolor{CUDYellow}{cmyk}{0.00,0.00,1.00,0.00}
 \definecolor{CUDGreen}{cmyk}{0.75,0.0,0.65,0.00}
@@ -17,17 +20,45 @@
 \definecolor{CUDPurple}{cmyk}{0.30,0.95,0.00,0.00}
 \definecolor{CUDBrown}{cmyk}{0.55,0.90,1.00,0.00}
 
+
+
 % --- base colors --- %
+
 \definecolor{CUDLightskyblue}{cmyk}{0.30,0.00,0.00,0.00}
 \definecolor{CUDCream}{cmyk}{0.00,0.00,0.40,0.00}
 \definecolor{CUDBeige}{cmyk}{0.00,0.25,0.45,0.00}
 \definecolor{CUDLightgreen}{cmyk}{0.45,0.00,0.45,0.00}
 \definecolor{CUDLightyellowgreen}{cmyk}{0.25,0.00,0.80,0.00}
 
+
+
 % --- achromatic color --- %
+
 \definecolor{CUDBlack}{cmyk}{0.00,0.00,0.00,1.00}
 \definecolor{CUDLightgray}{cmyk}{0.15,0.10,0.10,0.00}
 \definecolor{CUDGray}{cmyk}{0.18,0.10,0.00,0.55}
 \definecolor{CUDWhite}{cmyk}{0.00,0.00,0.00,0.00}
+
+
+
+% --- additional new commands --- %
+
+\colorlet{MemoColor}{CUDGreen}
+\colorlet{WarnColor}{CUDRed}
+
+\newcommand{\TextColorMemo}[1]{\textcolor{MemoColor}{#1}}
+\newcommand{\TextColorWarn}[1]{\textcolor{WarnColor}{#1}}
+
+\newcommand{\MemoOverBrace}[3][black]{\TextColorMemo{\overbrace{\textcolor{#1}{#2}}^{#3}}}
+\newcommand{\WarnOverBrace}[3][black]{\TextColorWarn{\overbrace{\textcolor{#1}{#2}}^{#3}}}
+
+\newcommand{\MemoOverBracket}[3][black]{\TextColorMemo{\overbracket{\textcolor{#1}{#2}}^{#3}}}
+\newcommand{\WarnOverBracket}[3][black]{\TextColorWarn{\overbracket{\textcolor{#1}{#2}}^{#3}}}
+
+\newcommand{\MemoUnderBrace}[3][black]{\TextColorMemo{\underbrace{\textcolor{#1}{#2}}_{#3}}}
+\newcommand{\WarnUnderBrace}[3][black]{\TextColorWarn{\underbrace{\textcolor{#1}{#2}}_{#3}}}
+
+\newcommand{\MemoUnderBracket}[3][black]{\TextColorMemo{\underbracket{\textcolor{#1}{#2}}_{#3}}}
+\newcommand{\WarnUnderBracket}[3][black]{\TextColorWarn{\underbracket{\textcolor{#1}{#2}}_{#3}}}
 
 % --- EOF --- %
