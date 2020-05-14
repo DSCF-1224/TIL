@@ -9,6 +9,7 @@
 ! 
 ! [reference]
 ! - https://gcc.gnu.org/onlinedocs/gfortran/RANDOM_005fSEED.html#RANDOM_005fSEED
+! - https://qiita.com/implicit_none/items/12c5404a11e6c237d100
 ! - https://www.nag-j.co.jp/fortran/tips/tips_RandomNumberInFortran.html
 ! 
 ! ==================================================================================================================================
@@ -23,13 +24,14 @@ module mod_random_number
 
     ! accessibility of the <subroutine>s and <function>s in this <module>
     public :: type_random_number_seed ! type
-    public :: get_random_seed         ! subroutine
+    public :: get_random_number_seed  ! subroutine
+    public :: put_random_number_seed  ! subroutine
 
 
     ! <type>s for this <module>
     type type_random_number_seed
-        integer,              public :: size
-        integer, allocatable, public :: value(:)
+        integer(INT32),              public :: size     = 0_INT32
+        integer(INT32), allocatable, public :: value(:) = 0_INT32
     end type type_random_number_seed
 
 
@@ -37,7 +39,7 @@ module mod_random_number
     contains
 
 
-    subroutine get_random_seed (obj)
+    subroutine get_random_number_seed (obj)
 
         ! arguments for this <subroutine>
         type(type_random_number_seed), intent(inout) :: obj
@@ -47,7 +49,7 @@ module mod_random_number
 
         ! STEP.01
         !  get the minimum size of the arrays used with the `PUT` and `GET` arguments @ intrinsic subroutine `RANDOM_NUMBER`
-        call random_seed(size = obj%size)
+        call random_seed(size= obj%size)
 
         ! STEP.02
         ! Verify that the size of the array needs to be updated to store the seed value of the random number.
@@ -73,7 +75,25 @@ module mod_random_number
         ! get the seed values
         call random_seed( get= obj%value(1:obj%size) )
 
-    end subroutine get_random_seed
+    end subroutine get_random_number_seed
+
+
+    subroutine put_random_number_seed (obj)
+
+        ! arguments for this <subroutine>
+        type(type_random_number_seed), intent(in) :: obj
+
+        ! STEP.01
+        ! check the status of the argument
+        if ( obj%size .lt. 1 ) then
+            write(unit= ERROR_UNIT, fmt= '(A)') 'The size of array to store the seed values must be positive !'
+        end if
+
+        ! STEP.02
+        ! put the seed values
+        call random_seed( put= obj%values(1:obj%size) )
+
+    end subroutine put_random_number_seed
 
 end module mod_random_number
 
