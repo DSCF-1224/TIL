@@ -10,6 +10,7 @@
 !     - http://fortranwiki.org/fortran/show/ieor
 !     - http://fortranwiki.org/fortran/show/shiftl
 !     - http://fortranwiki.org/fortran/show/shiftr
+! - https://hazm.at/mox/algorithm/pseudorandom-number/xorshift-rngs/index.html
 ! ==================================================================================================================================
 
 module mod_xorshift
@@ -25,7 +26,6 @@ module mod_xorshift
     public  :: type_xorshift32
     public  :: type_xorshift64
     public  :: type_xorshift128
-    private :: type_xorshift128_state
 
     public  :: get_seed     ! interface
     private :: get_seed_32  ! function
@@ -36,6 +36,10 @@ module mod_xorshift
     private :: set_seed_32  ! subroutine
     private :: set_seed_64  ! subroutine
     private :: set_seed_128 ! subroutine
+
+    public  :: random_number_xorshift32_sclr  ! subroutine
+    public  :: random_number_xorshift64_sclr  ! subroutine
+    public  :: random_number_xorshift128_sclr ! subroutine
 
 
     ! <type>s for this <module>
@@ -49,24 +53,23 @@ module mod_xorshift
         integer(INT64), private :: state
     end type type_xorshift64
 
-    type type_xorshift128_state
-        integer(INT32), public :: x
-        integer(INT32), public :: y
-        integer(INT32), public :: z
-        integer(INT32), public :: w
-    end type type_xorshift128_state
-
     type type_xorshift128
-        integer(INT32),                  private :: seed
-        type   (type_xorshift128_state), private :: state
+        integer(INT32), private :: seed (1:4)
+        integer(INT32), private :: state(1:4)
     end type type_xorshift128
 
 
     ! <interface>s for this <module>
+    interface get_seed
+        module procedure :: get_seed_32  ! function
+        module procedure :: get_seed_64  ! function
+        module procedure :: get_seed_128 ! function
+    end interface get_seed
+
     interface set_seed
-        module procedure :: set_seed_32
-        module procedure :: set_seed_64
-        module procedure :: set_seed_128
+        module procedure :: set_seed_32  ! subroutine
+        module procedure :: set_seed_64  ! subroutine
+        module procedure :: set_seed_128 ! subroutine
     end interface set_seed
 
 
@@ -108,15 +111,16 @@ module mod_xorshift
 
     ! [objective]
     ! get the seed value from the `type_xorshift128` object
-    pure function get_seed_128 (obj) result(seed)
+    pure function get_seed_128 (obj, idx) result(seed)
 
         ! arguments for this <function>
         type(type_xorshift128), intent(in) :: obj
+        integer,                intent(in) :: idx
 
         ! return value of this <function>
         integer(INT32) :: seed
 
-        seed = obj%seed
+        seed = obj%seed(idx)
         return
 
     end function get_seed_128
@@ -152,14 +156,15 @@ module mod_xorshift
 
     ! [objective]
     ! set the seed value for `Xorshift` which has four 32-bit word of state, and period {2}^{128} - 1
-    subroutine set_seed_128 (obj, seed)
+    subroutine set_seed_128 (obj, idx, val)
 
         ! arguments for this <subroutine>
         type   (type_xorshift128), intent(inout) :: obj
-        integer(INT64),            intent(in)    :: seed
+        integer,                   intent(in)    :: idx
+        integer(INT32),            intent(in)    :: val
 
-        obj%seed    = seed
-        obj%state%x = seed
+        obj%seed (idx) = val
+        obj%state(idx) = val
 
     end subroutine set_seed_128
 
@@ -172,14 +177,32 @@ module mod_xorshift
         type   (type_xorshift32), intent(inout) :: obj
         integer(INT32),           intent(inout) :: rand
 
-        rand      = ieor( i= obj%state, j= shiftl( i= obj%state, j= 13 ) )
-        rand      = ieor( i= rand,      j= shiftr( i= rand,      j= 17 ) )
-        rand      = ieor( i= rand,      j= shiftl( i= rand,      j=  5 ) )
+        rand      = ieor( i= obj%state, j= shiftl( i= obj%state, shift= 13 ) )
+        rand      = ieor( i= rand,      j= shiftr( i= rand,      shift= 17 ) )
+        rand      = ieor( i= rand,      j= shiftl( i= rand,      shift=  5 ) )
         obj%state = rand
 
         return
 
     end subroutine random_number_xorshift32_sclr
+
+
+    ! [objective]
+    ! generate a new quasi-random number using `Xorshift` which has one 64-bit word of state, and period {2}^{64} - 1
+    subroutine random_number_xorshift64_sclr(obj, rand)
+
+        ! arguments for this <subroutine>
+        type   (type_xorshift64), intent(inout) :: obj
+        integer(INT64),           intent(inout) :: rand
+
+        rand      = ieor( i= obj%state, j= shiftl( i= obj%state, shift= 13 ) )
+        rand      = ieor( i= rand,      j= shiftr( i= rand,      shift= 17 ) )
+        rand      = ieor( i= rand,      j= shiftl( i= rand,      shift=  5 ) )
+        obj%state = rand
+
+        return
+
+    end subroutine random_number_xorshift64_sclr
 
 
 end module mod_xorshift
