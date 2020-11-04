@@ -43,21 +43,27 @@
 
 % --- additional new commands --- %
 
+\colorlet{MainColor}{CUDBlue}
 \colorlet{MemoColor}{CUDGreen}
 \colorlet{WarnColor}{CUDRed}
 
+\newcommand{\TextColorMain}[1]{\textcolor{MainColor}{#1}}
 \newcommand{\TextColorMemo}[1]{\textcolor{MemoColor}{#1}}
 \newcommand{\TextColorWarn}[1]{\textcolor{WarnColor}{#1}}
 
+\newcommand{\MainOverBrace}[3][black]{\TextColorMain{\overbrace{\textcolor{#1}{#2}}^{#3}}}
 \newcommand{\MemoOverBrace}[3][black]{\TextColorMemo{\overbrace{\textcolor{#1}{#2}}^{#3}}}
 \newcommand{\WarnOverBrace}[3][black]{\TextColorWarn{\overbrace{\textcolor{#1}{#2}}^{#3}}}
 
+\newcommand{\MainOverBracket}[3][black]{\TextColorMain{\overbracket{\textcolor{#1}{#2}}^{#3}}}
 \newcommand{\MemoOverBracket}[3][black]{\TextColorMemo{\overbracket{\textcolor{#1}{#2}}^{#3}}}
 \newcommand{\WarnOverBracket}[3][black]{\TextColorWarn{\overbracket{\textcolor{#1}{#2}}^{#3}}}
 
+\newcommand{\MainUnderBrace}[3][black]{\TextColorMain{\underbrace{\textcolor{#1}{#2}}_{#3}}}
 \newcommand{\MemoUnderBrace}[3][black]{\TextColorMemo{\underbrace{\textcolor{#1}{#2}}_{#3}}}
 \newcommand{\WarnUnderBrace}[3][black]{\TextColorWarn{\underbrace{\textcolor{#1}{#2}}_{#3}}}
 
+\newcommand{\MainUnderBracket}[3][black]{\TextColorMain{\underbracket{\textcolor{#1}{#2}}_{#3}}}
 \newcommand{\MemoUnderBracket}[3][black]{\TextColorMemo{\underbracket{\textcolor{#1}{#2}}_{#3}}}
 \newcommand{\WarnUnderBracket}[3][black]{\TextColorWarn{\underbracket{\textcolor{#1}{#2}}_{#3}}}
 
