@@ -1,8 +1,12 @@
 {
 	"cSpell.words": [
+		"Discretization",
 		"Jupyter",
 		"Kutta",
 		"Navier",
-		"Runge"
-	]
+		"Runge",
+		"Wikibooks",
+	],
+	"python.linting.pylintEnabled": true,
+	"python.linting.enabled": true
 }
