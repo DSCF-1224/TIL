@@ -13,6 +13,13 @@ input.BottonHref {
 	margin: 10pt;
 }
 
+body.ExternalLinks {
+	counter-reset: chapter;
+}
+body.ExternalLinks h4:before {
+	content: "(No."counter(chapter)") ISBN ";
+	counter-increment: chapter;
+}
 body.ExternalLinks section.book dl { margin-bottom: 50px; }
 body.ExternalLinks section.book dd:before { content: "● "; font-size: smaller; }
 body.ExternalLinks section.book dd span.pdf:before { content: "(PDF)"; }
@@ -21,7 +28,6 @@ body.ExternalLinks section.book dd span.LinkTarget.GitHub:after { content: " Git
 body.ExternalLinks section.book dt { font-weight: bold; }
 body.ExternalLinks section.book dt:before { content: "["; }
 body.ExternalLinks section.book dt:after { content: "]"; }
-body.ExternalLinks section.book h4:before { content: "ISBN "; }
 
 @media print {
 	input.BottonHref { display: none; }
