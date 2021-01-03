@@ -13,6 +13,14 @@ input.BottonHref {
 	margin: 10pt;
 }
 
+section.ExternalLinks.book dd.item:before { content: "● "; font-size: smaller; }
+section.ExternalLinks.book dd span.pdf:before { content: "(PDF)"; }
+section.ExternalLinks.book dd span.LinkTarget:before { content: "@"; }
+section.ExternalLinks.book dd span.LinkTarget.GitHub:after { content: " GitHub"; }
+section.ExternalLinks.book dt { font-weight: bold; }
+section.ExternalLinks.book dt:before { content: "["; }
+section.ExternalLinks.book dt:after { content: "]"; }
+
 @media print {
 	input.BottonHref { display: none; }
 }
