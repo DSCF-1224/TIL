@@ -1,11 +1,16 @@
 {
 	"cSpell.words": [
 		"Discretization",
+		"Finlayson",
+		"Hellings",
 		"Jupyter",
+		"KADOKAWA",
+		"Kopec",
 		"Kutta",
 		"Navier",
 		"Runge",
 		"Wikibooks",
+		"devroye",
 	],
 	"python.linting.pylintEnabled": true,
 	"python.linting.enabled": true

@@ -13,13 +13,15 @@ input.BottonHref {
 	margin: 10pt;
 }
 
-section.ExternalLinks.book dd.item:before { content: "● "; font-size: smaller; }
-section.ExternalLinks.book dd span.pdf:before { content: "(PDF)"; }
-section.ExternalLinks.book dd span.LinkTarget:before { content: "@"; }
-section.ExternalLinks.book dd span.LinkTarget.GitHub:after { content: " GitHub"; }
-section.ExternalLinks.book dt { font-weight: bold; }
-section.ExternalLinks.book dt:before { content: "["; }
-section.ExternalLinks.book dt:after { content: "]"; }
+body.ExternalLinks section.book dl { margin-bottom: 50px; }
+body.ExternalLinks section.book dd:before { content: "● "; font-size: smaller; }
+body.ExternalLinks section.book dd span.pdf:before { content: "(PDF)"; }
+body.ExternalLinks section.book dd span.LinkTarget:before { content: "@"; }
+body.ExternalLinks section.book dd span.LinkTarget.GitHub:after { content: " GitHub"; }
+body.ExternalLinks section.book dt { font-weight: bold; }
+body.ExternalLinks section.book dt:before { content: "["; }
+body.ExternalLinks section.book dt:after { content: "]"; }
+body.ExternalLinks section.book h4:before { content: "ISBN "; }
 
 @media print {
 	input.BottonHref { display: none; }
