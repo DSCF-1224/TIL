@@ -9,25 +9,24 @@ body {
 	margin-right: 25pt;
 }
 
-input.BottonHref {
-	margin: 10pt;
-}
-
-body.ExternalLinks {
-	counter-reset: chapter;
-}
+body a.PDF::before { content: "(PDF) "; }
+body a.WebSite::before { content: "(Web Site) "; }
+body header h1::before { content: "TIL"; }
+input.BottonHref { margin: 10pt; }
+body.ExternalLinks { counter-reset: chapter; }
 body.ExternalLinks h4:before {
 	content: "(No."counter(chapter)") ISBN ";
 	counter-increment: chapter;
 }
+body.ExternalLinks header h2::before { content: "External Links >> "; }
 body.ExternalLinks section.book dl { margin-bottom: 50px; }
-body.ExternalLinks section.book dd:before { content: "● "; font-size: smaller; }
+body.ExternalLinks section.book dd::before { content: "● "; font-size: smaller; }
 body.ExternalLinks section.book dd span.pdf:before { content: "(PDF)"; }
-body.ExternalLinks section.book dd span.LinkTarget:before { content: "@"; }
-body.ExternalLinks section.book dd span.LinkTarget.GitHub:after { content: " GitHub"; }
+body.ExternalLinks section.book dd span.LinkTarget::before { content: "@"; }
+body.ExternalLinks section.book dd span.LinkTarget.GitHub::after { content: " GitHub"; }
 body.ExternalLinks section.book dt { font-weight: bold; }
-body.ExternalLinks section.book dt:before { content: "["; }
-body.ExternalLinks section.book dt:after { content: "]"; }
+body.ExternalLinks section.book dt::before { content: "["; }
+body.ExternalLinks section.book dt::after { content: "]"; }
 
 @media print {
 	input.BottonHref { display: none; }
