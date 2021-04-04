@@ -10,6 +10,7 @@ body {
 }
 
 body a.PDF::before { content: "(PDF) "; }
+body a.YouTube::before { content: "(YouTube) "; }
 body a.WebSite::before { content: "(Web Site) "; }
 body header h1::before { content: "TIL"; }
 input.BottonHref { margin: 10pt; }
